@@ -4,35 +4,56 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    private bool _isRight, _isLeft;
+
+    private bool isDragging = false;
+
+    private void Start()
+    {
+
+    }
+
     void Update()
     {
-        if (Input.GetMouseButton(0))
+        CardMovement();
+    }
+
+    void CardMovement()
+    {
+
+        if (Input.GetMouseButtonDown(0))
         {
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePos.z = 0f;
             RaycastHit2D hit = Physics2D.Raycast(mousePos, Vector2.zero);
-
-            if (hit.collider is null) return;
-            if (hit.collider.CompareTag("Card"))
+            if (hit.collider != null && hit.collider.CompareTag("Card"))
             {
-                Debug.Log("asdasd");
-                float screenMiddle = Screen.width / 2f;
-                if (mousePos.x > screenMiddle)
-                {
-                    transform.eulerAngles = new Vector3(0, 0, -30);
-                }
-                else if (mousePos.x < screenMiddle)
-                {
-                    transform.eulerAngles = new Vector3(0, 0, 30);
-                }
+                isDragging = true;
+               
             }
-        
-            
-            
         }
-            
-            
-        
-    }
+
        
+        if (isDragging && Input.GetMouseButton(0))
+        {
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePos.z = 0f;
+            transform.position = mousePos;
+
+            if (transform.position.x > Screen.width / 2)
+            {
+                transform.eulerAngles = new Vector3(0, 0, 30);
+            }
+            else
+            {
+                transform.eulerAngles = new Vector3(0, 0, -30);
+            }
+        }
+
+        
+        if (Input.GetMouseButtonUp(0))
+        {
+            isDragging = false;
+        }   
+    }
+
 }
