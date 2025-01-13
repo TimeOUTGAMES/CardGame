@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4414334481678669595, guid: 620e755a507c02b458bb3bc980d008b5, type: 3}
+  m_Sprite: {fileID: -668259342837943044, guid: 20d0d9ca044d4b143b9f55784b6a0cb8, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -128,7 +128,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
+    oldSize: {x: 1.8554688, y: 1.9824219}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -152,6 +152,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   maxDistance: 1.5
+  rotation: 5
   text: "Hastanelerimiz t\u0131ka basa dolu. Sa\u011Fl\u0131k \xE7al\u0131\u015Fanlar\u0131m\u0131z
     yeni hastaneler a\xE7\u0131lmas\u0131n\u0131 istiyor."
   isSelected: 0
