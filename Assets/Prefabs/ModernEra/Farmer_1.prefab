@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 453791412862506042, guid: 78e2c10a3275fb945b20e46b693b8add, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -152,6 +152,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   maxDistance: 1.5
+  rotation: 5
   text: "\xC7ift\xE7ilerimiz zor durumda. Artan maliyetler ve d\xFC\u015Fen verim
     onlar\u0131 k\xF6\u015Feye s\u0131k\u0131\u015Ft\u0131rd\u0131. Bir \u015Feyler
     yapmazsak k\u0131rsalda i\u015Fler daha k\xF6t\xFC olacak."
