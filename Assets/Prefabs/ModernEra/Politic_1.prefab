@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -889900188257660337, guid: 7104b8fa980da4c44951940db778323b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -152,6 +152,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   maxDistance: 1.5
+  rotation: 5
   text: "Toplumda e\u015Fitsizlik her ge\xE7en g\xFCn art\u0131yor. Bu y\xFCzden
     bir reform paketi haz\u0131rlamam\u0131z gerekiyor ama bu kaynak gerektirir."
   isSelected: 0

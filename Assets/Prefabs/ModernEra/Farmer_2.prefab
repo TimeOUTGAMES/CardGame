@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 453791412862506042, guid: 78e2c10a3275fb945b20e46b693b8add, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -152,6 +152,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   maxDistance: 1.5
+  rotation: 5
   text: "G\u0131da israf\u0131 b\xFCy\xFCk bir sorun haline geldi. Kaynaklar\u0131m\u0131z
     bo\u015Fa gidiyor. Halk\u0131 bilin\xE7lendirsek mi yoksa bu durumu g\xF6rmezden
     mi gelsek?"

@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 4414334481678669595, guid: 620e755a507c02b458bb3bc980d008b5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -152,6 +152,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   maxDistance: 1.5
+  rotation: 5
   text: "Salg\u0131n kap\u0131m\u0131zda ve h\u0131zla yay\u0131l\u0131yor. E\u011Fer
     hemen bir \u015Fey yapmazsan\u0131z, sa\u011Fl\u0131k sistemimiz \xE7\xF6kebilir"
   isSelected: 0

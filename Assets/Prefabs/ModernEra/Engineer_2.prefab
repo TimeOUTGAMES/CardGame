@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: -5027959210547854933, guid: 3d327cc420567474d9a802ed0a2125d2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -152,6 +152,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   maxDistance: 1.5
+  rotation: 5
   text: "Ak\u0131ll\u0131 \u015Fehir projeleriyle i\u015Flerimizi modernle\u015Ftirebiliriz
     ama bu ciddi bir b\xFCt\xE7e gerektiriyor. Daha az masrafl\u0131 ama daha yava\u015F
     bir iyile\u015Ftirme de yapabiliriz."
