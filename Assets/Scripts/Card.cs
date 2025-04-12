@@ -3,25 +3,26 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    public LayerMask cardLayermask;//KArtýn layerý
-    private Vector3 originalPosition;//Kartýn ilk konumu
-    private float startPosX;//Kartýn ilk yatay konumu
-    private bool isTouching;//Ekrana týklama kontrolü
-    public float maxDistance = 1.5f;//Kartý kaydýrabileceðimiz max mesafe
-    public float rotation=5;
+    public LayerMask cardLayermask;//KartÄ±n layerÄ±
+    private Vector3 originalPosition;//KartÄ±n ilk konumu
+    private float startPosX;//KartÄ±n ilk yatay konumu
+    private bool isTouching;//Ekrana tÄ±klama kontrolÃ¼
+    public float maxDistance = 1.5f;//KartÄ± kaydÄ±rabileceÄŸimiz max mesafe
+    public float rotation = 5;
 
-
+    public Vector3 firstTouchPos;
 
     #region
-    public string text;//Karakterlerin konuþma metinleri
-    public bool isSelected;// Kartýn seçili olup olmama durumu
-    public TextMeshProUGUI rightText, leftText;//Sað ve sol seçimler
+    public string text;//Karakterlerin konuÅŸma metinleri
+    public bool isSelected;// KartÄ±n seÃ§ili olup olmama durumu
+    public TextMeshProUGUI rightText, leftText;//SaÄŸ ve sol seÃ§imler
     #endregion
 
+    public static Card instance;//Singleton
 
+    private bool hasPlayedHoldSound = false; // Sesin Ã§alÄ±nÄ±p Ã§alÄ±nmadÄ±ÄŸÄ±nÄ± kontrol eden deÄŸiÅŸken
 
-    public static Card instance;//Singelton
-
+    public int cardSpeed;//KartÄ±n kaydÄ±rÄ±lma hÄ±zÄ±
 
     private void Awake()
     {
@@ -30,14 +31,17 @@ public class Card : MonoBehaviour
 
     private void Start()
     {
-
-        originalPosition = transform.position;//baþlangýç konumunu tutar
-        startPosX = originalPosition.x;//Baþlangýçtaki yatay konumunu tutar
+        originalPosition = transform.position;//BaÅŸlangÄ±Ã§ konumunu tutar
+        startPosX = originalPosition.x;//BaÅŸlangÄ±Ã§taki yatay konumunu tutar
     }
 
     private void Update()
     {
         TouchControl();
+        if(!isTouching)
+        {
+            ManageCard();
+        }
     }
 
     //Input sistemi 
@@ -53,82 +57,75 @@ public class Card : MonoBehaviour
             switch (touch.phase)
             {
                 case TouchPhase.Began:
-                    CheckCard(touchPosition);
-                    break;
+                    isTouching = CheckCard(touchPosition);
+                    firstTouchPos = touchPosition;
+                    hasPlayedHoldSound = false; // Yeni dokunuÅŸ baÅŸladÄ±ÄŸÄ±nda sÄ±fÄ±rla
+                    break;                
 
                 case TouchPhase.Moved:
-                case TouchPhase.Stationary:
-                    if (isTouching) MoveCard(touchPosition);
+                    MoveCard(touchPosition - firstTouchPos);
+                    firstTouchPos = touchPosition;
                     break;
 
                 case TouchPhase.Ended:
-                case TouchPhase.Canceled:
                     isTouching = false;
-                    ManageCard();
-                    
+                    hasPlayedHoldSound = false; // DokunuÅŸ bittiÄŸinde tekrar oynatÄ±labilir hale getir                    
                     break;
             }
         }
     }
 
-
-    //Ýlk týklandýðý zaman kart mý diye kontrol et
-    private void CheckCard(Vector3 touchPosition)
+    private bool CheckCard(Vector3 touchPosition)
     {
         RaycastHit2D hit = Physics2D.Raycast(touchPosition, Vector2.zero, Mathf.Infinity, cardLayermask);
-
-        if (hit.collider != null) isTouching = true;
-        else isTouching = false;
-
+        return hit.collider != null;
     }
 
-
-    //Kartýn sað sol hareketi
-    private void MoveCard(Vector3 touchPosition)
+    private void MoveCard(Vector3 moveAmount)
     {
-        RaycastHit2D hit = Physics2D.Raycast(touchPosition, Vector2.zero, Mathf.Infinity);
-        transform.position = hit.point;
-        RotateCard();
+        if (isTouching)
+        {            
+            transform.position += moveAmount;
+            RotateCard();
 
+            // EÄŸer ses daha Ã¶nce Ã§alÄ±nmadÄ±ysa, Ã§al ve flag'i gÃ¼ncelle
+            if (!hasPlayedHoldSound)
+            {
+                AudioManager.instance.Play("HoldCard");
+                hasPlayedHoldSound = true;
+            }
+        }
     }
 
-    //Baþlangýç pozisyonuna döndür
     private void ReturnToOriginalPosition()
     {
-        transform.position = originalPosition;
+        transform.position = Vector3.MoveTowards(transform.position, originalPosition, Time.deltaTime * cardSpeed);
         transform.eulerAngles = Vector3.zero;
         leftText.gameObject.SetActive(false);
         rightText.gameObject.SetActive(false);
     }
 
     private void RotateCard()
-    {
-        //Kart saðda ise
-        if (transform.position.x > startPosX)
-        {
-            leftText.gameObject.SetActive(false);
-            rightText.gameObject.SetActive(true);
-            transform.eulerAngles = new Vector3(0, 0, -rotation);
-        }
-        //Kart solda ise
-        else if (transform.position.x < startPosX)
-        {
-            rightText.gameObject.SetActive(false);
-            leftText.gameObject.SetActive(true);
-            transform.eulerAngles = new Vector3(0, 0, rotation);
-        }
+    {        
+        rightText.gameObject.SetActive(transform.position.x > startPosX);
+        leftText.gameObject.SetActive(transform.position.x < startPosX);
+        transform.eulerAngles = new Vector3(0, 0, (startPosX - transform.position.x) * 10f);
     }
 
-   
-
-
-
-    //Kartý belli bir mesafeye sürüklediðimiz zaman kartýn durumu
     private void ManageCard()
     {
         float distance = Mathf.Abs(originalPosition.x - transform.position.x);
-        //Kart max sürükleme mesafesini aþarsa kartý seçildi olarak seç aþmazsa ilk konumuna geri getir
-        if (distance >= maxDistance) isSelected = true;
-        else ReturnToOriginalPosition();
+
+        if (distance >= maxDistance)
+        {
+            AudioManager.instance.Play("CardSelected");
+            isSelected = true;            
+            Destroy(gameObject);
+        }
+        else 
+        {
+            ReturnToOriginalPosition();
+        }
     }
 }
+

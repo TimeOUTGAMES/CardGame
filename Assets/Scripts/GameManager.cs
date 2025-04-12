@@ -13,11 +13,11 @@ public class GameManager : MonoBehaviour
 
 
     [SerializeField]
-    public List<GameObject> modernEraCardsList;//Modern Çað kartlarýnýn tutulduðu liste
+    public List<GameObject> modernEraCardsList;//Modern ï¿½aï¿½ kartlarï¿½nï¿½n tutulduï¿½u liste
     [SerializeField]
-    public Transform modernEraTransform;//Modern Çað kartlarýnýn oluþturulduðu boþ objenin referansý
+    public Transform modernEraTransform;//Modern ï¿½aï¿½ kartlarï¿½nï¿½n oluï¿½turulduï¿½u boï¿½ objenin referansï¿½
     [SerializeField]
-    public TextMeshProUGUI cardText;//Kartlarýn UI da görünen konuþma metinleri
+    public TextMeshProUGUI cardText;//Kartlarï¿½n UI da gï¿½rï¿½nen konuï¿½ma metinleri
 
 
     public static GameManager instance;
@@ -29,11 +29,12 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-
+       
     }
 
+  
 
-    //Kartlarý rastgele sýralar ve oluþturur
+    //Kartlarï¿½ rastgele sï¿½ralar ve oluï¿½turur
     public void RandomAlign()
     {
 
@@ -46,22 +47,22 @@ public class GameManager : MonoBehaviour
 
     }
 
-    //Kartý seçme sonucu diðer kartý gösterir
+    //Kartï¿½ seï¿½me sonucu diï¿½er kartï¿½ gï¿½sterir
     public void ShowCard()
     {
         if (modernEraTransform.childCount > 0)
         {
             modernEraTransform.GetChild(0).gameObject.SetActive(true);
-            bool isSelected = modernEraTransform.GetChild(0).GetComponent<Card>().isSelected;
+            // bool isSelected = modernEraTransform.GetChild(0).GetComponent<Card>().isSelected;
 
-            if (isSelected) Destroy(modernEraTransform.GetChild(0).gameObject);
+            // if (isSelected) Destroy(modernEraTransform.GetChild(0).gameObject);
         }
         else print("game over");
 
 
 
     }
-    //Kartlarýn konuþma metinlerini UI da gösterir
+    //Kartlarï¿½n konuï¿½ma metinlerini UI da gï¿½sterir
     public void ShowText()
     {
 
