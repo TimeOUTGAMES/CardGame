@@ -152,11 +152,13 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   maxDistance: 1.5
+  rotation: 5
   text: "Enerji altyap\u0131m\u0131z \xE7ok zay\u0131f. \xC7\xF6z\xFCm i\xE7in yenilenebilir
     enerji mi yoksa N\xFCkleer santraller mi yapal\u0131m"
   isSelected: 0
   rightText: {fileID: 1997470953400699300}
   leftText: {fileID: 2649958237592902516}
+  healthChange: 10
 --- !u!1001 &7572174097162101786
 PrefabInstance:
   m_ObjectHideFlags: 0

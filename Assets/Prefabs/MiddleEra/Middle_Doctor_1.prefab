@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6903735696523856206}
   - component: {fileID: 170548518477716505}
   m_Layer: 6
-  m_Name: Doctor_2
+  m_Name: Middle_Doctor_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -153,12 +153,15 @@ MonoBehaviour:
     m_Bits: 64
   maxDistance: 1.5
   rotation: 5
-  text: "Salg\u0131n kap\u0131m\u0131zda ve h\u0131zla yay\u0131l\u0131yor. E\u011Fer
-    hemen bir \u015Fey yapmazsan\u0131z, sa\u011Fl\u0131k sistemimiz \xE7\xF6kebilir"
+  text: "Hastanelerimiz t\u0131ka basa dolu. Sa\u011Fl\u0131k \xE7al\u0131\u015Fanlar\u0131m\u0131z
+    yeni hastaneler a\xE7\u0131lmas\u0131n\u0131 istiyor."
   isSelected: 0
   rightText: {fileID: 6138941700954609196}
   leftText: {fileID: 7660373610187392252}
   healthChange: 10
+  farmerChange: 0
+  peopleChange: 0
+  economyChange: 0
 --- !u!1001 &2854248574276189074
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -249,7 +252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5607912560358244206, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_text
-      value: "Panik yapmay\u0131n\n"
+      value: b
       objectReference: {fileID: 0}
     - target: {fileID: 5607912560358244206, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_fontColor.b
@@ -261,11 +264,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5607912560358244206, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5607912560358244206, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 7574464019639832702, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8263459933574327742, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_text
-      value: "A\u015F\u0131 \xFCretin"
+      value: a
       objectReference: {fileID: 0}
     - target: {fileID: 8263459933574327742, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_fontColor.b
@@ -279,9 +290,17 @@ PrefabInstance:
       propertyPath: m_fontColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8263459933574327742, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
     - target: {fileID: 8603057109702104695, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171688019763764843, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

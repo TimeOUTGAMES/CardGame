@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2265995096109407204
+--- !u!1 &3437834291298304105
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,40 +8,40 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5617364853611106169}
-  - component: {fileID: 993949679811850833}
-  - component: {fileID: 6903735696523856206}
-  - component: {fileID: 170548518477716505}
+  - component: {fileID: 8299667115628966332}
+  - component: {fileID: 2817428430940124665}
+  - component: {fileID: 527015724385244293}
+  - component: {fileID: 4095032662418651676}
   m_Layer: 6
-  m_Name: Doctor_2
+  m_Name: Middle_Engineer_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5617364853611106169
+--- !u!4 &8299667115628966332
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2265995096109407204}
+  m_GameObject: {fileID: 3437834291298304105}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1.5, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 4604628232486183814}
+  - {fileID: 8173887326946442254}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!212 &993949679811850833
+--- !u!212 &2817428430940124665
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2265995096109407204}
+  m_GameObject: {fileID: 3437834291298304105}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -79,7 +79,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4414334481678669595, guid: 620e755a507c02b458bb3bc980d008b5, type: 3}
+  m_Sprite: {fileID: -5027959210547854933, guid: 3d327cc420567474d9a802ed0a2125d2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -90,13 +90,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &6903735696523856206
+--- !u!61 &527015724385244293
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2265995096109407204}
+  m_GameObject: {fileID: 3437834291298304105}
   m_Enabled: 1
   serializedVersion: 3
   m_Density: 1
@@ -136,13 +136,13 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &170548518477716505
+--- !u!114 &4095032662418651676
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2265995096109407204}
+  m_GameObject: {fileID: 3437834291298304105}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9696fe1583c83b04497242d837de1e92, type: 3}
@@ -153,19 +153,19 @@ MonoBehaviour:
     m_Bits: 64
   maxDistance: 1.5
   rotation: 5
-  text: "Salg\u0131n kap\u0131m\u0131zda ve h\u0131zla yay\u0131l\u0131yor. E\u011Fer
-    hemen bir \u015Fey yapmazsan\u0131z, sa\u011Fl\u0131k sistemimiz \xE7\xF6kebilir"
+  text: "Enerji altyap\u0131m\u0131z \xE7ok zay\u0131f. \xC7\xF6z\xFCm i\xE7in yenilenebilir
+    enerji mi yoksa N\xFCkleer santraller mi yapal\u0131m"
   isSelected: 0
-  rightText: {fileID: 6138941700954609196}
-  leftText: {fileID: 7660373610187392252}
+  rightText: {fileID: 1997470953400699300}
+  leftText: {fileID: 2649958237592902516}
   healthChange: 10
---- !u!1001 &2854248574276189074
+--- !u!1001 &7572174097162101786
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 5617364853611106169}
+    m_TransformParent: {fileID: 8299667115628966332}
     m_Modifications:
     - target: {fileID: 1763932277805897748, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_Pivot.x
@@ -249,7 +249,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5607912560358244206, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_text
-      value: "Panik yapmay\u0131n\n"
+      value: Yenilenebilir enerji
       objectReference: {fileID: 0}
     - target: {fileID: 5607912560358244206, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_fontColor.b
@@ -265,7 +265,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8263459933574327742, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_text
-      value: "A\u015F\u0131 \xFCretin"
+      value: "N\xFCkleer santral\n"
       objectReference: {fileID: 0}
     - target: {fileID: 8263459933574327742, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_fontColor.b
@@ -288,15 +288,10 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
---- !u!224 &4604628232486183814 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1763932277805897748, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
-  m_PrefabInstance: {fileID: 2854248574276189074}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &6138941700954609196 stripped
+--- !u!114 &1997470953400699300 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8263459933574327742, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
-  m_PrefabInstance: {fileID: 2854248574276189074}
+  m_PrefabInstance: {fileID: 7572174097162101786}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -304,10 +299,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7660373610187392252 stripped
+--- !u!114 &2649958237592902516 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5607912560358244206, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
-  m_PrefabInstance: {fileID: 2854248574276189074}
+  m_PrefabInstance: {fileID: 7572174097162101786}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
@@ -315,3 +310,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!224 &8173887326946442254 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 1763932277805897748, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+  m_PrefabInstance: {fileID: 7572174097162101786}
+  m_PrefabAsset: {fileID: 0}

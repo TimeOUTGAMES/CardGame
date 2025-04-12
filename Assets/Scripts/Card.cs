@@ -18,7 +18,12 @@ public class Card : MonoBehaviour
     public TextMeshProUGUI rightText, leftText;//Sað ve sol seçimler
     #endregion
 
+    public float healthChange;
+    public float farmerChange;
+    public float peopleChange;
+    public float economyChange;
 
+    private BarManager barManager;
 
     public static Card instance;//Singelton
 
@@ -26,6 +31,7 @@ public class Card : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        barManager = FindFirstObjectByType<BarManager>();
     }
 
     private void Start()
@@ -128,7 +134,32 @@ public class Card : MonoBehaviour
     {
         float distance = Mathf.Abs(originalPosition.x - transform.position.x);
         //Kart max sürükleme mesafesini aþarsa kartý seçildi olarak seç aþmazsa ilk konumuna geri getir
-        if (distance >= maxDistance) isSelected = true;
+        if (distance >= maxDistance)
+        {
+            isSelected = true;
+            ApplyBarEffect();
+        }
         else ReturnToOriginalPosition();
+    }
+
+    // Bar deðerlerini deðiþtir
+    private void ApplyBarEffect()
+    {
+        if (barManager == null) return;
+
+        if (transform.position.x > startPosX) // Kart saða kaydýrýldýysa
+        {
+            barManager.ModifyHealth(healthChange);
+            barManager.ModifyFarmer(farmerChange);
+            barManager.ModifyPeople(peopleChange);
+            barManager.ModifyEconomy(economyChange);
+        }
+        else if (transform.position.x < startPosX) // Kart sola kaydýrýldýysa
+        {
+            barManager.ModifyHealth(-healthChange);
+            barManager.ModifyFarmer(-farmerChange);
+            barManager.ModifyPeople(-peopleChange);
+            barManager.ModifyEconomy(-economyChange);
+        }
     }
 }

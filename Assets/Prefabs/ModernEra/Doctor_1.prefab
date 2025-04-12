@@ -152,11 +152,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   maxDistance: 1.5
+  rotation: 5
   text: "Hastanelerimiz t\u0131ka basa dolu. Sa\u011Fl\u0131k \xE7al\u0131\u015Fanlar\u0131m\u0131z
     yeni hastaneler a\xE7\u0131lmas\u0131n\u0131 istiyor."
   isSelected: 0
   rightText: {fileID: 6138941700954609196}
   leftText: {fileID: 7660373610187392252}
+  healthChange: 10
+  farmerChange: 5
+  peopleChange: 5
+  economyChange: 5
 --- !u!1001 &2854248574276189074
 PrefabInstance:
   m_ObjectHideFlags: 0

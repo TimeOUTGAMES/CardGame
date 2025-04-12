@@ -55,5 +55,8 @@ MonoBehaviour:
   - {fileID: 7359926408150939088, guid: 26d41045c6f4f3e4c84cef9c94b96919, type: 3}
   - {fileID: 7986797608127062225, guid: 1298276f143085f45b2c981603f97296, type: 3}
   - {fileID: 7986797608127062225, guid: 9d91fe145641f724a88fedd557f3061c, type: 3}
+  middleEraCardslist:
+  - {fileID: 2265995096109407204, guid: 6df9adff91418844aacc4bcfc9397176, type: 3}
   modernEraTransform: {fileID: 0}
+  middleEraTransform: {fileID: 0}
   cardText: {fileID: 0}
