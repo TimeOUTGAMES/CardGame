@@ -153,12 +153,14 @@ MonoBehaviour:
     m_Bits: 64
   maxDistance: 1.5
   rotation: 5
+  firstTouchPos: {x: 0, y: 0, z: 0}
   text: "Ak\u0131ll\u0131 \u015Fehir projeleriyle i\u015Flerimizi modernle\u015Ftirebiliriz
     ama bu ciddi bir b\xFCt\xE7e gerektiriyor. Daha az masrafl\u0131 ama daha yava\u015F
     bir iyile\u015Ftirme de yapabiliriz."
   isSelected: 0
   rightText: {fileID: 1997470953400699300}
   leftText: {fileID: 2649958237592902516}
+  cardSpeed: 0
 --- !u!1001 &7572174097162101786
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -246,6 +248,10 @@ PrefabInstance:
     - target: {fileID: 1763932277805897748, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4572609326140427738, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5607912560358244206, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_text

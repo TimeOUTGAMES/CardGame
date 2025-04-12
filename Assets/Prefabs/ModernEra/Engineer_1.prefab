@@ -153,11 +153,13 @@ MonoBehaviour:
     m_Bits: 64
   maxDistance: 1.5
   rotation: 5
+  firstTouchPos: {x: 0, y: 0, z: 0}
   text: "Enerji altyap\u0131m\u0131z \xE7ok zay\u0131f. \xC7\xF6z\xFCm i\xE7in yenilenebilir
     enerji mi yoksa N\xFCkleer santraller mi yapal\u0131m"
   isSelected: 0
   rightText: {fileID: 1997470953400699300}
   leftText: {fileID: 2649958237592902516}
+  cardSpeed: 0
 --- !u!1001 &7572174097162101786
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -245,6 +247,14 @@ PrefabInstance:
     - target: {fileID: 1763932277805897748, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2048123503638836289, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4572609326140427738, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5607912560358244206, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_text
