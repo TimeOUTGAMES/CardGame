@@ -55,5 +55,28 @@ MonoBehaviour:
   - {fileID: 7359926408150939088, guid: 26d41045c6f4f3e4c84cef9c94b96919, type: 3}
   - {fileID: 7986797608127062225, guid: 1298276f143085f45b2c981603f97296, type: 3}
   - {fileID: 7986797608127062225, guid: 9d91fe145641f724a88fedd557f3061c, type: 3}
-  modernEraTransform: {fileID: 0}
-  cardText: {fileID: 0}
+  middleEraCardsList:
+  - {fileID: 2265995096109407204, guid: 1f6d038c1ddecf94bb08ac7e3de5a790, type: 3}
+  - {fileID: 2265995096109407204, guid: 1d6f99db404a9cb4ebc868dfdead21c9, type: 3}
+  - {fileID: 2265995096109407204, guid: b7aaccf9de432f94fb88999ad0ed6caf, type: 3}
+  - {fileID: 2265995096109407204, guid: 880354240f914be40bc43f0a5d4ae60c, type: 3}
+  - {fileID: 2265995096109407204, guid: d7c2d5f9a193a2b4b9bbaad308ee66c4, type: 3}
+  - {fileID: 2265995096109407204, guid: 6a1cbe0e30cd49440b88087ebcce5b50, type: 3}
+  - {fileID: 2265995096109407204, guid: 0f4b3b67a75b33049b53d38dd71dd75b, type: 3}
+  - {fileID: 2265995096109407204, guid: a7111cfa121e4fc4a9e647b15ec835a8, type: 3}
+  - {fileID: 2265995096109407204, guid: ab9b22bc977d0ed44b7afb9abf45ee5e, type: 3}
+  - {fileID: 2265995096109407204, guid: 526309846a4feab488e938e1514f7915, type: 3}
+  ancientEraCardsList:
+  - {fileID: 2265995096109407204, guid: a5b77f7bcfbb41040b7d38fbd34420a6, type: 3}
+  - {fileID: 2265995096109407204, guid: 71ab9bfb88db20a48988a1e46bfa2f84, type: 3}
+  - {fileID: 2265995096109407204, guid: 5f3be50babe45e4429c6cf5875ea711b, type: 3}
+  - {fileID: 2265995096109407204, guid: 5a20d07cbe6c65a47927f5fb030ab93b, type: 3}
+  - {fileID: 2265995096109407204, guid: 9c08b8c32e0dd66459428b02d68dd8ec, type: 3}
+  - {fileID: 2265995096109407204, guid: 1d7d8af392a7604489973e602daf0257, type: 3}
+  - {fileID: 2265995096109407204, guid: cb5cc1915e1e9054ea826c02435fdeaf, type: 3}
+  - {fileID: 2265995096109407204, guid: da025812959e7c34c8e1bc591008241e, type: 3}
+  - {fileID: 2265995096109407204, guid: 8f73342793f23bb4393b9d2c5ffaf3dd, type: 3}
+  - {fileID: 2265995096109407204, guid: 78b7ea75fd5d9e245a372c23c0a83e5f, type: 3}
+  cardsTransform: {fileID: 1983312949673562293, guid: 55f5407036fb2d34b8812fe746fa66cf, type: 3}
+  characterString: {fileID: 0}
+  characterName: {fileID: 0}

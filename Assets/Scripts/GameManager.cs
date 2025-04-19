@@ -13,35 +13,43 @@ public class GameManager : MonoBehaviour
 
 
     [SerializeField]
-    public List<GameObject> modernEraCardsList;//Modern �a� kartlar�n�n tutuldu�u liste
+    public List<GameObject> modernEraCardsList, middleEraCardsList, ancientEraCardsList;//Kartlar�n listeleri
     [SerializeField]
-    public Transform modernEraTransform;//Modern �a� kartlar�n�n olu�turuldu�u bo� objenin referans�
+    public Transform cardsTransform;//Modern �a� kartlar�n�n olu�turuldu�u bo� objenin referans�
     [SerializeField]
-    public TextMeshProUGUI cardText;//Kartlar�n UI da g�r�nen konu�ma metinleri
+    public TextMeshProUGUI characterString, characterName;//Kartlar�n UI da g�r�nen konu�ma metinleri
 
 
     public static GameManager instance;
     private void Awake()
     {
         instance = this;
-        RandomAlign();
+
 
     }
     void Start()
     {
-       
+
     }
 
-  
+
 
     //Kartlar� rastgele s�ralar ve olu�turur
-    public void RandomAlign()
+    public void CreateCards()
     {
+        InstantiateCard(modernEraCardsList);
+        InstantiateCard(middleEraCardsList);
+        InstantiateCard(ancientEraCardsList);
 
-        List<GameObject> randomCards = modernEraCardsList.OrderBy(x => Random.value).ToList();
-        foreach (GameObject cards in randomCards)
+    }
+
+
+    void InstantiateCard(List<GameObject> cardList)
+    {
+       List<GameObject> allCards = cardList.OrderBy(x => Random.value).ToList();
+       foreach (GameObject cards in allCards)
         {
-            GameObject card = Instantiate(cards, modernEraTransform);
+            GameObject card = Instantiate(cards, cardsTransform);
             card.SetActive(false);
         }
 
@@ -50,29 +58,27 @@ public class GameManager : MonoBehaviour
     //Kart� se�me sonucu di�er kart� g�sterir
     public void ShowCard()
     {
-        if (modernEraTransform.childCount > 0)
+        if (cardsTransform.childCount > 0)
         {
-            modernEraTransform.GetChild(0).gameObject.SetActive(true);
-            // bool isSelected = modernEraTransform.GetChild(0).GetComponent<Card>().isSelected;
-
-            // if (isSelected) Destroy(modernEraTransform.GetChild(0).gameObject);
+            cardsTransform.GetChild(0).gameObject.SetActive(true);
         }
         else print("game over");
-
-
-
     }
     //Kartlar�n konu�ma metinlerini UI da g�sterir
     public void ShowText()
     {
 
-        if (modernEraTransform.childCount > 0)
+        if (cardsTransform.childCount > 0)
         {
-            string text = modernEraTransform.GetChild(0).GetComponent<Card>().text;
-            cardText.text = $"{text}";
+            characterString.text = $"{cardsTransform.GetChild(0).GetComponent<Card>().characterString}";
+            characterName.text = $"{cardsTransform.GetChild(0).GetComponent<Card>().characterName}";
         }
         else
-            cardText.text = "";
+        {
+            characterString.text = "";
+            characterName.text = "";
+        }
+
     }
 
 

@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 2265995096109407204}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.5, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -154,12 +154,13 @@ MonoBehaviour:
   maxDistance: 1.5
   rotation: 5
   firstTouchPos: {x: 0, y: 0, z: 0}
-  text: "Halk k\xF6y\xFCn k\xF6t\xFC ruhlar taraf\u0131ndan lanetlendi\u011Fini d\xFC\u015F\xFCn\xFCyor.
-    Ruhani koruma istiyorlar."
+  characterString: "Ruhlar bizimle de\u011Fil. Halk, do\u011Fal afetlerin artaca\u011F\u0131n\u0131
+    d\xFC\u015F\xFCn\xFCyor ve korkuyor. Rit\xFCel yapmam\u0131z gerekiyor"
+  characterName: 'Chalchiuhtlicue '
   isSelected: 0
   rightText: {fileID: 6138941700954609196}
   leftText: {fileID: 7660373610187392252}
-  cardSpeed: 0
+  cardSpeed: 30
 --- !u!1001 &2854248574276189074
 PrefabInstance:
   m_ObjectHideFlags: 0

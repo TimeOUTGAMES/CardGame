@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3437834291298304105}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.5, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -154,12 +154,13 @@ MonoBehaviour:
   maxDistance: 1.5
   rotation: 5
   firstTouchPos: {x: 0, y: 0, z: 0}
-  text: "Enerji altyap\u0131m\u0131z \xE7ok zay\u0131f. \xC7\xF6z\xFCm i\xE7in yenilenebilir
-    enerji mi yoksa N\xFCkleer santraller mi yapal\u0131m"
+  characterString: "Enerji altyap\u0131m\u0131z \xE7ok zay\u0131f. \xC7\xF6z\xFCm
+    i\xE7in yenilenebilir enerji mi yoksa N\xFCkleer santraller mi yapal\u0131m"
+  characterName: 'Noah '
   isSelected: 0
   rightText: {fileID: 1997470953400699300}
   leftText: {fileID: 2649958237592902516}
-  cardSpeed: 0
+  cardSpeed: 30
 --- !u!1001 &7572174097162101786
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -277,6 +278,10 @@ PrefabInstance:
       value: "N\xFCkleer santral\n"
       objectReference: {fileID: 0}
     - target: {fileID: 8263459933574327742, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      propertyPath: m_fontSize
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263459933574327742, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_fontColor.b
       value: 0
       objectReference: {fileID: 0}
@@ -288,9 +293,17 @@ PrefabInstance:
       propertyPath: m_fontColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8263459933574327742, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
     - target: {fileID: 8603057109702104695, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171688019763764843, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

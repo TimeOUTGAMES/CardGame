@@ -13,7 +13,7 @@ public class Card : MonoBehaviour
     public Vector3 firstTouchPos;
 
     #region
-    public string text;//Karakterlerin konuşma metinleri
+    public string characterString,characterName;//Karakterlerin konuşma metinleri
     public bool isSelected;// Kartın seçili olup olmama durumu
     public TextMeshProUGUI rightText, leftText;//Sağ ve sol seçimler
     #endregion
@@ -69,7 +69,7 @@ public class Card : MonoBehaviour
 
                 case TouchPhase.Ended:
                     isTouching = false;
-                    hasPlayedHoldSound = false; // Dokunuş bittiğinde tekrar oynatılabilir hale getir                    
+                    hasPlayedHoldSound = false; // Dokunuş bittiğinde tekrar oynatılabilir hale getir                                     
                     break;
             }
         }

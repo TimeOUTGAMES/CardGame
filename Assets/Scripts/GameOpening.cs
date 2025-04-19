@@ -45,6 +45,12 @@ public class GameOpening : MonoBehaviour
             }
             
         }
+        else if(i==transform.childCount)
+        {
+            Destroy(gameObject);
+            GameManager.instance.CreateCards();
+            
+        }
         
     }
 

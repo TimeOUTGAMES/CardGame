@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7359926408150939088}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.5, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -154,13 +154,14 @@ MonoBehaviour:
   maxDistance: 1.5
   rotation: 5
   firstTouchPos: {x: 0, y: 0, z: 0}
-  text: "Uluslararas\u0131 bask\u0131lar \xFCzerimizde. D\u0131\u015F politikada
-    daha sert bir duru\u015F mu sergilemeliyiz yoksa diplomasiye a\u011F\u0131rl\u0131k
+  characterString: "Uluslararas\u0131 bask\u0131lar \xFCzerimizde. D\u0131\u015F
+    politikada daha sert bir duru\u015F mu sergilemeliyiz yoksa diplomasiye a\u011F\u0131rl\u0131k
     m\u0131 vermeliyiz?"
+  characterName: Amelia
   isSelected: 0
   rightText: {fileID: 683435140602170702}
   leftText: {fileID: 3891945047361904542}
-  cardSpeed: 0
+  cardSpeed: 30
 --- !u!1001 &8922116453151432944
 PrefabInstance:
   m_ObjectHideFlags: 0
