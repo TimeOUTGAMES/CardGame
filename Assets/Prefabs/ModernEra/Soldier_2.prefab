@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7986797608127062225}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.5, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -154,13 +154,14 @@ MonoBehaviour:
   maxDistance: 1.5
   rotation: 5
   firstTouchPos: {x: 0, y: 0, z: 0}
-  text: "Protestolar kontrolden \xE7\u0131kmak \xFCzere. \u015Eiddet olaylar\u0131
+  characterString: "Protestolar kontrolden \xE7\u0131kmak \xFCzere. \u015Eiddet olaylar\u0131
     art\u0131yor ve toplumsal d\xFCzen tehdit alt\u0131nda. G\xFCvenli\u011Fi artt\u0131rman\u0131z\u0131
     \xF6neriyorum"
+  characterName: 'Lucas '
   isSelected: 0
   rightText: {fileID: 8876214752446464929}
   leftText: {fileID: 4922537265141584241}
-  cardSpeed: 0
+  cardSpeed: 30
 --- !u!1001 &685412790293868063
 PrefabInstance:
   m_ObjectHideFlags: 0
