@@ -13,7 +13,7 @@ public class Card : MonoBehaviour
     public Vector3 firstTouchPos;
 
     #region
-    public string characterString,characterName;//Karakterlerin konuşma metinleri
+    public string characterString, characterName;//Karakterlerin konuşma metinleri
     public bool isSelected;// Kartın seçili olup olmama durumu
     public TextMeshProUGUI rightText, leftText;//Sağ ve sol seçimler
     #endregion
@@ -24,9 +24,23 @@ public class Card : MonoBehaviour
 
     public int cardSpeed;//Kartın kaydırılma hızı
 
+
+
+
+
+
+
+    public float healthChange;
+    public float farmerChange;
+    public float peopleChange;
+    public float economyChange;
+
+    private BarControl barControl;
+
     private void Awake()
     {
         instance = this;
+        barControl = FindAnyObjectByType<BarControl>();
     }
 
     private void Start()
@@ -38,7 +52,7 @@ public class Card : MonoBehaviour
     private void Update()
     {
         TouchControl();
-        if(!isTouching)
+        if (!isTouching)
         {
             ManageCard();
         }
@@ -60,7 +74,7 @@ public class Card : MonoBehaviour
                     isTouching = CheckCard(touchPosition);
                     firstTouchPos = touchPosition;
                     hasPlayedHoldSound = false; // Yeni dokunuş başladığında sıfırla
-                    break;                
+                    break;
 
                 case TouchPhase.Moved:
                     MoveCard(touchPosition - firstTouchPos);
@@ -84,7 +98,7 @@ public class Card : MonoBehaviour
     private void MoveCard(Vector3 moveAmount)
     {
         if (isTouching)
-        {            
+        {
             transform.position += moveAmount;
             RotateCard();
 
@@ -106,7 +120,7 @@ public class Card : MonoBehaviour
     }
 
     private void RotateCard()
-    {        
+    {
         rightText.gameObject.SetActive(transform.position.x > startPosX);
         leftText.gameObject.SetActive(transform.position.x < startPosX);
         transform.eulerAngles = new Vector3(0, 0, (startPosX - transform.position.x) * 10f);
@@ -119,12 +133,27 @@ public class Card : MonoBehaviour
         if (distance >= maxDistance)
         {
             AudioManager.instance.Play("CardSelected");
-            isSelected = true;            
+            isSelected = true;
+            ApplyBarEffect();
             Destroy(gameObject);
         }
-        else 
+        else
         {
             ReturnToOriginalPosition();
+        }
+    }
+
+    // Bar değerlerini değiştir
+    private void ApplyBarEffect()
+    {
+        if (barControl == null) return;
+
+        if (transform.position.x > startPosX || transform.position.x < startPosX) // Kart sağa veya sola kaydırıldıysa barları değiştir
+        {
+            barControl.ModifyMilitary(healthChange);
+            barControl.ModifyEconomy(farmerChange);
+            barControl.ModifyFarm(peopleChange);
+            barControl.ModifyPublic(economyChange);
         }
     }
 }

@@ -38,7 +38,7 @@ public class TextControl : MonoBehaviour
         while (time < fadeDuration)
         {
             // CanvasGroup alpha deðerini zamanla deðiþtir
-            canvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, time / fadeDuration * 2);
+            canvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, time / fadeDuration);
             time += Time.deltaTime;
             yield return null;
         }

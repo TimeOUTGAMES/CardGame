@@ -161,6 +161,10 @@ MonoBehaviour:
   rightText: {fileID: 6138941700954609196}
   leftText: {fileID: 7660373610187392252}
   cardSpeed: 30
+  healthChange: 5
+  farmerChange: 5
+  peopleChange: 5
+  economyChange: 0
 --- !u!1001 &2854248574276189074
 PrefabInstance:
   m_ObjectHideFlags: 0
