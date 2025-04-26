@@ -25,15 +25,18 @@ public class Card : MonoBehaviour
     public int cardSpeed;//Kartın kaydırılma hızı
 
 
+    [Header("Sola kaydırınca barlara etkileri")]
+    public float leftMilitaryChange;
+    public float leftFarmChange;
+    public float leftPublicChange;
+    public float leftEconomyChange;
 
 
-
-
-
-    public float healthChange;
-    public float farmerChange;
-    public float peopleChange;
-    public float economyChange;
+    [Header("Sağa kaydırınca barlara etkileri")]
+    public float rightMilitaryChange;
+    public float rightFarmChange;
+    public float rightPublicChange;
+    public float rightEconomyChange;
 
     private BarControl barControl;
 
@@ -83,7 +86,9 @@ public class Card : MonoBehaviour
 
                 case TouchPhase.Ended:
                     isTouching = false;
-                    hasPlayedHoldSound = false; // Dokunuş bittiğinde tekrar oynatılabilir hale getir                                     
+                    hasPlayedHoldSound = false; // Dokunuş bittiğinde tekrar oynatılabilir hale getir
+                    if (barControl != null)
+                        barControl.ResetBarColors();
                     break;
             }
         }
@@ -102,11 +107,42 @@ public class Card : MonoBehaviour
             transform.position += moveAmount;
             RotateCard();
 
-            // Eğer ses daha önce çalınmadıysa, çal ve flag'i güncelle
             if (!hasPlayedHoldSound)
             {
                 AudioManager.instance.Play("HoldCard");
                 hasPlayedHoldSound = true;
+            }
+
+            // 🔥 BURASI ÖNEMLİ: Bar rengi değişimi
+            if (barControl != null)
+            {
+                float direction = transform.position.x - startPosX;
+
+                if (Mathf.Abs(direction) > 0.1f)
+                {
+                    if (direction > 0) // sağa kaydırma
+                    {
+                        barControl.PreviewBarEffects(
+                            rightEconomyChange,
+                            rightFarmChange,
+                            rightPublicChange,
+                            rightMilitaryChange
+                        );
+                    }
+                    else // sola kaydırma
+                    {
+                        barControl.PreviewBarEffects(
+                            leftEconomyChange,
+                            leftFarmChange,
+                            leftPublicChange,
+                            leftMilitaryChange
+                        );
+                    }
+                }
+                else
+                {
+                    barControl.ResetBarColors(); // çok az hareket varsa resetle
+                }
             }
         }
     }
@@ -148,13 +184,21 @@ public class Card : MonoBehaviour
     {
         if (barControl == null) return;
 
-        if (transform.position.x > startPosX || transform.position.x < startPosX) // Kart sağa veya sola kaydırıldıysa barları değiştir
+        if (transform.position.x > startPosX ) // Kart sağa kaydırıldıysa barları değiştir
         {
-            barControl.ModifyMilitary(healthChange);
-            barControl.ModifyEconomy(farmerChange);
-            barControl.ModifyFarm(peopleChange);
-            barControl.ModifyPublic(economyChange);
+            barControl.ModifyMilitary(rightMilitaryChange);
+            barControl.ModifyEconomy(rightEconomyChange);
+            barControl.ModifyFarm(rightFarmChange);
+            barControl.ModifyPublic(rightPublicChange);
         }
+
+        if (transform.position.x < startPosX) // kart sola kaydırıldıysa barları değiştir
+        {
+            barControl.ModifyMilitary(leftMilitaryChange);
+            barControl.ModifyEconomy(leftEconomyChange);
+            barControl.ModifyFarm(leftFarmChange);
+            barControl.ModifyPublic(leftPublicChange);
+        } 
     }
 }
 

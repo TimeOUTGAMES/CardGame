@@ -10,6 +10,11 @@ public class BarControl : MonoBehaviour
 
     public float maxBarValue = 100f;
     public float minBarValue = 0f;
+
+    public Image economyFill;
+    public Image farmFill;
+    public Image publicFill;
+    public Image militaryFill;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -51,5 +56,46 @@ public class BarControl : MonoBehaviour
     {
         militaryBar.value = Mathf.Clamp(militaryBar.value + value, minBarValue, maxBarValue);
     }
+
+    public void PreviewBarEffects(float economy, float farm, float publicVal, float military)
+    {
+        SetBarPreview(economyFill, economy);
+        SetBarPreview(farmFill, farm);
+        SetBarPreview(publicFill, publicVal);
+        SetBarPreview(militaryFill, military);
+    }
+
+    public void ResetBarColors()
+    {
+        ResetColor(economyFill);
+        ResetColor(farmFill);
+        ResetColor(publicFill);
+        ResetColor(militaryFill);
+    }
+
+    private void SetBarPreview(Image image, float value) 
+    {
+        if (image == null) return;
+
+        float intensity = Mathf.Min(Mathf.Abs(value) / 5f, 1f); // Deðer arttýkça yoðunluk artar
+
+        if (value > 0)
+        {
+            image.color = Color.Lerp(Color.white, Color.blue, intensity);
+           
+
+        }
+        else if (value < 0)
+            image.color = Color.Lerp(Color.white, Color.red, intensity); // Azalýþ: kýrmýzý
+        else
+            image.color = Color.white; // Etki yok
+    }
+
+    private void ResetColor(Image image) 
+    {
+        if (image != null)
+            image.color = Color.white;
+    }
+
 
 }
