@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 3437834291298304105}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.5, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -134,7 +134,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &4095032662418651676
 MonoBehaviour:
@@ -153,12 +153,19 @@ MonoBehaviour:
     m_Bits: 64
   maxDistance: 1.5
   rotation: 5
-  text: "Ak\u0131ll\u0131 \u015Fehir projeleriyle i\u015Flerimizi modernle\u015Ftirebiliriz
+  firstTouchPos: {x: 0, y: 0, z: 0}
+  characterString: "Ak\u0131ll\u0131 \u015Fehir projeleriyle i\u015Flerimizi modernle\u015Ftirebiliriz
     ama bu ciddi bir b\xFCt\xE7e gerektiriyor. Daha az masrafl\u0131 ama daha yava\u015F
-    bir iyile\u015Ftirme de yapabiliriz."
+    bir iyile\u015Ftirme de yapabiliriz. Sizce?"
+  characterName: 'Noah '
   isSelected: 0
   rightText: {fileID: 1997470953400699300}
   leftText: {fileID: 2649958237592902516}
+  cardSpeed: 30
+  healthChange: 15
+  farmerChange: 0
+  peopleChange: 0
+  economyChange: 10
 --- !u!1001 &7572174097162101786
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -246,6 +253,14 @@ PrefabInstance:
     - target: {fileID: 1763932277805897748, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2048123503638836289, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4572609326140427738, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5607912560358244206, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_text

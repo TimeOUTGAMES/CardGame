@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7986797608127062225}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.5, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -134,7 +134,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &2729476207994158471
 MonoBehaviour:
@@ -153,13 +153,16 @@ MonoBehaviour:
     m_Bits: 64
   maxDistance: 1.5
   rotation: 5
-  text: "S\u0131n\u0131rlar\u0131m\u0131zda i\u015Fler \xE7\u0131\u011F\u0131r\u0131ndan
+  firstTouchPos: {x: 0, y: 0, z: 0}
+  characterString: "S\u0131n\u0131rlar\u0131m\u0131zda i\u015Fler \xE7\u0131\u011F\u0131r\u0131ndan
     \xE7\u0131k\u0131yor. Ka\xE7ak\xE7\u0131l\u0131k ve yasad\u0131\u015F\u0131 g\xF6\xE7\xFC
     art\u0131k kontrol edemiyoruz. Bu durumu \xE7\xF6zmek i\xE7in orduyu kullanal\u0131m
     bence"
+  characterName: 'Lucas '
   isSelected: 0
   rightText: {fileID: 8876214752446464929}
   leftText: {fileID: 4922537265141584241}
+  cardSpeed: 30
 --- !u!1001 &685412790293868063
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -247,6 +250,14 @@ PrefabInstance:
     - target: {fileID: 1763932277805897748, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2048123503638836289, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4572609326140427738, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5607912560358244206, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_text

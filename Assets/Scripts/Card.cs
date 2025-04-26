@@ -3,41 +3,62 @@ using UnityEngine;
 
 public class Card : MonoBehaviour
 {
-    public LayerMask cardLayermask;//KArtın layerı
-    private Vector3 originalPosition;//Kartın ilk konumu
-    private float startPosX;//Kartın ilk yatay konumu
-    private bool isTouching;//Ekrana tıklama kontrolü
-    public float maxDistance = 1.5f;//Kartı kaydırabileceğimiz max mesafe
-    public float rotation=5;
+    public LayerMask cardLayermask;//KartÄ±n layerÄ±
+    private Vector3 originalPosition;//KartÄ±n ilk konumu
+    private float startPosX;//KartÄ±n ilk yatay konumu
+    private bool isTouching;//Ekrana tÄ±klama kontrolÃ¼
+    public float maxDistance = 1.5f;//KartÄ± kaydÄ±rabileceÄŸimiz max mesafe
+    public float rotation = 5;
 
-
+    public Vector3 firstTouchPos;
 
     #region
-    public string text;//Karakterlerin konuşma metinleri
-    public bool isSelected;// Kartın seçili olup olmama durumu
-    public TextMeshProUGUI rightText, leftText;//Sağ ve sol seçimler
+    public string characterString, characterName;//Karakterlerin konuÅŸma metinleri
+    public bool isSelected;// KartÄ±n seÃ§ili olup olmama durumu
+    public TextMeshProUGUI rightText, leftText;//SaÄŸ ve sol seÃ§imler
     #endregion
 
+    public static Card instance;//Singleton
+
+    private bool hasPlayedHoldSound = false; // Sesin Ã§alÄ±nÄ±p Ã§alÄ±nmadÄ±ÄŸÄ±nÄ± kontrol eden deÄŸiÅŸken
+
+    public int cardSpeed;//KartÄ±n kaydÄ±rÄ±lma hÄ±zÄ±
 
 
-    public static Card instance;//Singelton
+    [Header("Sola kaydÄ±rÄ±nca barlara etkileri")]
+    public float leftMilitaryChange;
+    public float leftFarmChange;
+    public float leftPublicChange;
+    public float leftEconomyChange;
 
+
+    [Header("SaÄŸa kaydÄ±rÄ±nca barlara etkileri")]
+    public float rightMilitaryChange;
+    public float rightFarmChange;
+    public float rightPublicChange;
+    public float rightEconomyChange;
+
+    private BarControl barControl;
 
     private void Awake()
     {
         instance = this;
+        barControl = FindAnyObjectByType<BarControl>();
     }
 
     private void Start()
     {
-
-        originalPosition = transform.position;//başlangıç konumunu tutar
-        startPosX = originalPosition.x;//Başlangıçtaki yatay konumunu tutar
+        originalPosition = transform.position;//BaÅŸlangÄ±Ã§ konumunu tutar
+        startPosX = originalPosition.x;//BaÅŸlangÄ±Ã§taki yatay konumunu tutar
     }
 
     private void Update()
     {
         TouchControl();
+        if (!isTouching)
+        {
+            ManageCard();
+        }
     }
 
     //Input sistemi 
@@ -53,49 +74,82 @@ public class Card : MonoBehaviour
             switch (touch.phase)
             {
                 case TouchPhase.Began:
-                    CheckCard(touchPosition);
+                    isTouching = CheckCard(touchPosition);
+                    firstTouchPos = touchPosition;
+                    hasPlayedHoldSound = false; // Yeni dokunuÅŸ baÅŸladÄ±ÄŸÄ±nda sÄ±fÄ±rla
                     break;
 
                 case TouchPhase.Moved:
-                case TouchPhase.Stationary:
-                    if (isTouching) MoveCard(touchPosition);
+                    MoveCard(touchPosition - firstTouchPos);
+                    firstTouchPos = touchPosition;
                     break;
 
                 case TouchPhase.Ended:
-                case TouchPhase.Canceled:
                     isTouching = false;
-                    ManageCard();
-                    
+                    hasPlayedHoldSound = false; // DokunuÅŸ bittiÄŸinde tekrar oynatÄ±labilir hale getir
+                    if (barControl != null)
+                        barControl.ResetBarColors();
                     break;
             }
         }
     }
 
-
-    //İlk tıklandığı zaman kart mı diye kontrol et
-    private void CheckCard(Vector3 touchPosition)
+    private bool CheckCard(Vector3 touchPosition)
     {
         RaycastHit2D hit = Physics2D.Raycast(touchPosition, Vector2.zero, Mathf.Infinity, cardLayermask);
-
-        if (hit.collider != null) isTouching = true;
-        else isTouching = false;
-
+        return hit.collider != null;
     }
 
-
-    //Kartın sağ sol hareketi
-    private void MoveCard(Vector3 touchPosition)
+    private void MoveCard(Vector3 moveAmount)
     {
-        RaycastHit2D hit = Physics2D.Raycast(touchPosition, Vector2.zero, Mathf.Infinity);
-        transform.position = hit.point;
-        RotateCard();
+        if (isTouching)
+        {
+            transform.position += moveAmount;
+            RotateCard();
 
+            if (!hasPlayedHoldSound)
+            {
+                AudioManager.instance.Play("HoldCard");
+                hasPlayedHoldSound = true;
+            }
+
+            // ğŸ”¥ BURASI Ã–NEMLÄ°: Bar rengi deÄŸiÅŸimi
+            if (barControl != null)
+            {
+                float direction = transform.position.x - startPosX;
+
+                if (Mathf.Abs(direction) > 0.1f)
+                {
+                    if (direction > 0) // saÄŸa kaydÄ±rma
+                    {
+                        barControl.PreviewBarEffects(
+                            rightEconomyChange,
+                            rightFarmChange,
+                            rightPublicChange,
+                            rightMilitaryChange
+                        );
+                    }
+                    else // sola kaydÄ±rma
+                    {
+                        barControl.PreviewBarEffects(
+                            leftEconomyChange,
+                            leftFarmChange,
+                            leftPublicChange,
+                            leftMilitaryChange
+                        );
+                    }
+                }
+                else
+                {
+                    barControl.ResetBarColors(); // Ã§ok az hareket varsa resetle
+                }
+            }
+        }
     }
 
-    //Başlangıç pozisyonuna döndür
     private void ReturnToOriginalPosition()
     {
-        transform.position = originalPosition;
+        transform.position = Vector3.MoveTowards(transform.position, originalPosition, Time.deltaTime * cardSpeed);
         transform.eulerAngles = Vector3.zero;
         leftText.gameObject.SetActive(false);
         rightText.gameObject.SetActive(false);
@@ -103,32 +157,48 @@ public class Card : MonoBehaviour
 
     private void RotateCard()
     {
-        //Kart sağda ise
-        if (transform.position.x > startPosX)
-        {
-            leftText.gameObject.SetActive(false);
-            rightText.gameObject.SetActive(true);
-            transform.eulerAngles = new Vector3(0, 0, -rotation);
-        }
-        //Kart solda ise
-        else if (transform.position.x < startPosX)
-        {
-            rightText.gameObject.SetActive(false);
-            leftText.gameObject.SetActive(true);
-            transform.eulerAngles = new Vector3(0, 0, rotation);
-        }
+        rightText.gameObject.SetActive(transform.position.x > startPosX);
+        leftText.gameObject.SetActive(transform.position.x < startPosX);
+        transform.eulerAngles = new Vector3(0, 0, (startPosX - transform.position.x) * 10f);
     }
 
-   
-
-
-
-    //Kartı belli bir mesafeye sürüklediğimiz zaman kartın durumu
     private void ManageCard()
     {
         float distance = Mathf.Abs(originalPosition.x - transform.position.x);
-        //Kart max sürükleme mesafesini aşarsa kartı seçildi olarak seç aşmazsa ilk konumuna geri getir
-        if (distance >= maxDistance) isSelected = true;
-        else ReturnToOriginalPosition();
+
+        if (distance >= maxDistance)
+        {
+            AudioManager.instance.Play("CardSelected");
+            isSelected = true;
+            ApplyBarEffect();
+            Destroy(gameObject);
+        }
+        else
+        {
+            ReturnToOriginalPosition();
+        }
+    }
+
+    // Bar deÄŸerlerini deÄŸiÅŸtir
+    private void ApplyBarEffect()
+    {
+        if (barControl == null) return;
+
+        if (transform.position.x > startPosX ) // Kart saÄŸa kaydÄ±rÄ±ldÄ±ysa barlarÄ± deÄŸiÅŸtir
+        {
+            barControl.ModifyMilitary(rightMilitaryChange);
+            barControl.ModifyEconomy(rightEconomyChange);
+            barControl.ModifyFarm(rightFarmChange);
+            barControl.ModifyPublic(rightPublicChange);
+        }
+
+        if (transform.position.x < startPosX) // kart sola kaydÄ±rÄ±ldÄ±ysa barlarÄ± deÄŸiÅŸtir
+        {
+            barControl.ModifyMilitary(leftMilitaryChange);
+            barControl.ModifyEconomy(leftEconomyChange);
+            barControl.ModifyFarm(leftFarmChange);
+            barControl.ModifyPublic(leftPublicChange);
+        } 
     }
 }
+

@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 7899696582023982438}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.5, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -134,7 +134,7 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &6322104234436441220
 MonoBehaviour:
@@ -153,12 +153,15 @@ MonoBehaviour:
     m_Bits: 64
   maxDistance: 1.5
   rotation: 5
-  text: "G\u0131da israf\u0131 b\xFCy\xFCk bir sorun haline geldi. Kaynaklar\u0131m\u0131z
+  firstTouchPos: {x: 0, y: 0, z: 0}
+  characterString: "G\u0131da israf\u0131 b\xFCy\xFCk bir sorun haline geldi. Kaynaklar\u0131m\u0131z
     bo\u015Fa gidiyor. Halk\u0131 bilin\xE7lendirsek mi yoksa bu durumu g\xF6rmezden
     mi gelsek?"
+  characterName: 'James '
   isSelected: 0
   rightText: {fileID: 5884443031615861666}
   leftText: {fileID: 7986929461246828914}
+  cardSpeed: 30
 --- !u!1001 &2523151336592285212
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -246,6 +249,14 @@ PrefabInstance:
     - target: {fileID: 1763932277805897748, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2048123503638836289, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      propertyPath: m_SortingOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4572609326140427738, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5607912560358244206, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_text

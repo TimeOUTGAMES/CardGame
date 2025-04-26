@@ -13,18 +13,18 @@ public class GameManager : MonoBehaviour
 
 
     [SerializeField]
-    public List<GameObject> modernEraCardsList;//Modern Çað kartlarýnýn tutulduðu liste
+    public List<GameObject> modernEraCardsList, middleEraCardsList, ancientEraCardsList;//Kartlarï¿½n listeleri
     [SerializeField]
-    public Transform modernEraTransform;//Modern Çað kartlarýnýn oluþturulduðu boþ objenin referansý
+    public Transform cardsTransform;//Modern ï¿½aï¿½ kartlarï¿½nï¿½n oluï¿½turulduï¿½u boï¿½ objenin referansï¿½
     [SerializeField]
-    public TextMeshProUGUI cardText;//Kartlarýn UI da görünen konuþma metinleri
+    public TextMeshProUGUI characterString, characterName;//Kartlarï¿½n UI da gï¿½rï¿½nen konuï¿½ma metinleri
 
 
     public static GameManager instance;
     private void Awake()
     {
         instance = this;
-        RandomAlign();
+
 
     }
     void Start()
@@ -33,45 +33,52 @@ public class GameManager : MonoBehaviour
     }
 
 
-    //Kartlarý rastgele sýralar ve oluþturur
-    public void RandomAlign()
-    {
 
-        List<GameObject> randomCards = modernEraCardsList.OrderBy(x => Random.value).ToList();
-        foreach (GameObject cards in randomCards)
+    //Kartlarï¿½ rastgele sï¿½ralar ve oluï¿½turur
+    public void CreateCards()
+    {
+        InstantiateCard(modernEraCardsList);
+        InstantiateCard(middleEraCardsList);
+        InstantiateCard(ancientEraCardsList);
+
+    }
+
+
+    void InstantiateCard(List<GameObject> cardList)
+    {
+       List<GameObject> allCards = cardList.OrderBy(x => Random.value).ToList();
+       foreach (GameObject cards in allCards)
         {
-            GameObject card = Instantiate(cards, modernEraTransform);
+            GameObject card = Instantiate(cards, cardsTransform);
             card.SetActive(false);
         }
 
     }
 
-    //Kartý seçme sonucu diðer kartý gösterir
+    //Kartï¿½ seï¿½me sonucu diï¿½er kartï¿½ gï¿½sterir
     public void ShowCard()
     {
-        if (modernEraTransform.childCount > 0)
+        if (cardsTransform.childCount > 0)
         {
-            modernEraTransform.GetChild(0).gameObject.SetActive(true);
-            bool isSelected = modernEraTransform.GetChild(0).GetComponent<Card>().isSelected;
-
-            if (isSelected) Destroy(modernEraTransform.GetChild(0).gameObject);
+            cardsTransform.GetChild(0).gameObject.SetActive(true);
         }
         else print("game over");
-
-
-
     }
-    //Kartlarýn konuþma metinlerini UI da gösterir
+    //Kartlarï¿½n konuï¿½ma metinlerini UI da gï¿½sterir
     public void ShowText()
     {
 
-        if (modernEraTransform.childCount > 0)
+        if (cardsTransform.childCount > 0)
         {
-            string text = modernEraTransform.GetChild(0).GetComponent<Card>().text;
-            cardText.text = $"{text}";
+            characterString.text = $"{cardsTransform.GetChild(0).GetComponent<Card>().characterString}";
+            characterName.text = $"{cardsTransform.GetChild(0).GetComponent<Card>().characterName}";
         }
         else
-            cardText.text = "";
+        {
+            characterString.text = "";
+            characterName.text = "";
+        }
+
     }
 
 
