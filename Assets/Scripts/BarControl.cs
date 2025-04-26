@@ -15,9 +15,26 @@ public class BarControl : MonoBehaviour
     public Image farmFill;
     public Image publicFill;
     public Image militaryFill;
+
+
+    private float originalEconomyFill;
+    private float originalFarmFill;
+    private float originalPublicFill;
+    private float originalMilitaryFill;
+
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+
+        // ... zaten var olan ayarlarýn yanýnda
+        originalEconomyFill = -1f;
+        originalFarmFill = -1f;
+        originalPublicFill = -1f;
+        originalMilitaryFill = -1f;
+
+
         economyBar.maxValue = maxBarValue;
         economyBar.minValue = minBarValue;
         economyBar.value = economyBar.maxValue / 2; // Ekonomi barýnýn baþlangýç deðeri
@@ -59,43 +76,64 @@ public class BarControl : MonoBehaviour
 
     public void PreviewBarEffects(float economy, float farm, float publicVal, float military)
     {
-        SetBarPreview(economyFill, economy);
-        SetBarPreview(farmFill, farm);
-        SetBarPreview(publicFill, publicVal);
-        SetBarPreview(militaryFill, military);
+        SetBarPreview(economyBar, economyFill, economy, ref originalEconomyFill);
+        SetBarPreview(farmBar, farmFill, farm, ref originalFarmFill);
+        SetBarPreview(publicBar, publicFill, publicVal, ref originalPublicFill);
+        SetBarPreview(militaryBar, militaryFill, military, ref originalMilitaryFill);
     }
+
 
     public void ResetBarColors()
     {
-        ResetColor(economyFill);
-        ResetColor(farmFill);
-        ResetColor(publicFill);
-        ResetColor(militaryFill);
+        ResetColor(economyFill, ref originalEconomyFill);
+        ResetColor(farmFill, ref originalFarmFill);
+        ResetColor(publicFill, ref originalPublicFill);
+        ResetColor(militaryFill, ref originalMilitaryFill);
     }
 
-    private void SetBarPreview(Image image, float value) 
-    {
-        if (image == null) return;
 
-        float intensity = Mathf.Min(Mathf.Abs(value) / 5f, 1f); // Deðer arttýkça yoðunluk artar
+    private void SetBarPreview(Slider slider, Image fillImage, float value, ref float originalFill)
+    {
+        if (slider == null || fillImage == null) return;
+
+        // Ýlk dokunulduðunda orijinal deðeri kaydet
+        if (originalFill == -1f)
+        {
+            originalFill = fillImage.fillAmount;
+        }
+
+        // Þu anki deðer + deðiþim
+        float currentValue = slider.value;
+        float previewValue = Mathf.Clamp(currentValue + value, minBarValue, maxBarValue);
+        float normalizedPreviewValue = (previewValue - minBarValue) / (maxBarValue - minBarValue);
+
+        fillImage.fillAmount = normalizedPreviewValue;
+
+        // Renk deðiþimi
+        float intensity = Mathf.Min(Mathf.Abs(value) / 5f, 1f);
 
         if (value > 0)
-        {
-            image.color = Color.Lerp(Color.white, Color.blue, intensity);
-           
-
-        }
+            fillImage.color = Color.Lerp(Color.white, Color.green, intensity); // Artýþ
         else if (value < 0)
-            image.color = Color.Lerp(Color.white, Color.red, intensity); // Azalýþ: kýrmýzý
+            fillImage.color = Color.Lerp(Color.white, Color.red, intensity); // Azalýþ
         else
-            image.color = Color.white; // Etki yok
+            fillImage.color = Color.white;
     }
 
-    private void ResetColor(Image image) 
+
+    private void ResetColor(Image image, ref float originalFill)
     {
         if (image != null)
+        {
             image.color = Color.white;
+            if (originalFill != -1f)
+            {
+                image.fillAmount = originalFill;
+                originalFill = -1f; // Sýfýrla ki bir sonraki dokunuþta tekrar kayýt yapýlsýn
+            }
+        }
     }
+
 
 
 }
