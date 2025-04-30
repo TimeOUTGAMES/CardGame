@@ -27,13 +27,6 @@ public class CharacterCard : Cards
 
     private void Awake()
     {
-        // Check for duplicate instances
-        if (instance != null && instance != this)
-        {
-            Debug.LogWarning("Multiple CharacterCard instances found. Destroying duplicate.");
-            Destroy(gameObject);
-            return;
-        }
         instance = this;
         
         // Use GetComponent or other proper reference methods instead of FindAnyObjectByType
