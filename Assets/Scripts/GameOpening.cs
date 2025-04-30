@@ -3,56 +3,80 @@ using UnityEngine;
 
 public class GameOpening : MonoBehaviour
 {
-    public GameObject card;
-    public int cardCount;
+    [Header("Card Settings")]
+    [SerializeField] private GameObject card;
+    [SerializeField] private int cardCount = 5;
+    [SerializeField] private float cardSpeed = 5f;
+    [SerializeField] private float delay = 0.2f;
 
-    public Vector3 firstCardPosition;
-    public Vector3 secondCardPosition;
-    public float cardSpeed;
-    public float delay;
-    int i =0;
+    [Header("Position Settings")]
+    [SerializeField] private Vector3 firstCardPosition;
+    [SerializeField] private Vector3 secondCardPosition;
 
-    void Awake()
+    private int currentCardIndex = 0;
+    private bool isInitialized = false;
+    private const float ARRIVAL_THRESHOLD = 0.1f;
+
+    private void Awake()
     {
         InstantiateCards();
+        isInitialized = true;
     }
 
-
-    void Update()
+    private void Update()
     {
-        MoveCards();
+        if (isInitialized)
+        {
+            MoveCards();
+        }
     }
 
-    public void InstantiateCards()
+    private void InstantiateCards()
     {
+        if (card == null)
+        {
+            Debug.LogError("Card prefab is not assigned!");
+            return;
+        }
+
         for (int i = 0; i < cardCount; i++)
         {
             Instantiate(card, firstCardPosition, Quaternion.identity, transform);
         }
     }
 
-    public void MoveCards()
+    private void MoveCards()
     {
-        
+        // Check if we're done with all cards
+        if (currentCardIndex >= transform.childCount)
+        {
+            FinishOpeningSequence();
+            return;
+        }
 
-        if (i < transform.childCount)
+        // Get current card and move it
+        Transform currentCard = transform.GetChild(currentCardIndex);
+        if (currentCard != null)
         {
-            GameObject currentCard = transform.GetChild(i).gameObject;
-            currentCard.transform.position = Vector3.MoveTowards(currentCard.transform.position, secondCardPosition, cardSpeed * Time.deltaTime);
-            if (Vector3.Distance(currentCard.transform.position, secondCardPosition) < 0.1f)
-            {                
-                i++;
+            currentCard.position = Vector3.MoveTowards(
+                currentCard.position,
+                secondCardPosition,
+                cardSpeed * Time.deltaTime
+            );
+
+            // Check if card reached destination
+            if (Vector3.Distance(currentCard.position, secondCardPosition) < ARRIVAL_THRESHOLD)
+            {
+                AudioManager.instance.Play("HoldCard");
+                currentCardIndex++;
             }
-            
         }
-        else if(i==transform.childCount)
-        {
-            Destroy(gameObject);
-            GameManager.instance.CreateCards();
-            
-        }
-        
     }
 
-    
+    private void FinishOpeningSequence()
+    {
+
+        GameManager.instance.CreateCards();        
+        Destroy(gameObject);
+    }
 }

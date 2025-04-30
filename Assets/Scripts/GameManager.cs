@@ -2,22 +2,19 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+
 
 public class GameManager : MonoBehaviour
 {
 
-
-
-
-
-
     [SerializeField]
-    public List<GameObject> modernEraCardsList, middleEraCardsList, ancientEraCardsList;//Kartlar�n listeleri
+    public List<GameObject> modernEraCardsList, middleEraCardsList, ancientEraCardsList, modernEraAI, middleEraAI, ancientEraAI;
     [SerializeField]
-    public Transform cardsTransform;//Modern �a� kartlar�n�n olu�turuldu�u bo� objenin referans�
+    public Transform cardsTransform;
     [SerializeField]
-    public TextMeshProUGUI characterString, characterName;//Kartlar�n UI da g�r�nen konu�ma metinleri
+    public TextMeshProUGUI characterString, characterName;
+
+    public GameObject bgCard;
 
 
     public static GameManager instance;
@@ -27,31 +24,45 @@ public class GameManager : MonoBehaviour
 
 
     }
-    void Start()
-    {
 
-    }
-
-
-
-    //Kartlar� rastgele s�ralar ve olu�turur
     public void CreateCards()
     {
+        InstatiateAICards(modernEraAI);
         InstantiateCard(modernEraCardsList);
+        InstatiateAICards(middleEraAI);
         InstantiateCard(middleEraCardsList);
+        InstatiateAICards(ancientEraAI);
         InstantiateCard(ancientEraCardsList);
 
+
+        bgCard.SetActive(true);
+
     }
+
+    // public GameObject cards;
+
+    void InstatiateAICards(List<GameObject> cardList)
+    {
+
+        foreach (GameObject cardPrefab in cardList)
+        {
+            GameObject card = Instantiate(cardPrefab, cardsTransform);
+            card.SetActive(false);
+        }
+
+    }
+
 
 
     void InstantiateCard(List<GameObject> cardList)
     {
-       List<GameObject> allCards = cardList.OrderBy(x => Random.value).ToList();
-       foreach (GameObject cards in allCards)
+         List<GameObject> allCards = cardList.OrderBy(x => Random.value).ToList();
+        foreach (GameObject cardPrefab in allCards)
         {
-            GameObject card = Instantiate(cards, cardsTransform);
+            GameObject card = Instantiate(cardPrefab, cardsTransform);
             card.SetActive(false);
         }
+
 
     }
 
@@ -70,8 +81,16 @@ public class GameManager : MonoBehaviour
 
         if (cardsTransform.childCount > 0)
         {
-            characterString.text = $"{cardsTransform.GetChild(0).GetComponent<Card>().characterString}";
-            characterName.text = $"{cardsTransform.GetChild(0).GetComponent<Card>().characterName}";
+            if (cardsTransform.GetChild(0).GetComponent<CharacterCard>() != null)
+            {
+                characterString.text = $"{cardsTransform.GetChild(0).GetComponent<CharacterCard>().characterString}";
+                characterName.text = $"{cardsTransform.GetChild(0).GetComponent<CharacterCard>().characterName}";
+            }
+            else if (cardsTransform.GetChild(0).GetComponent<AICard>() != null)
+            {
+                characterString.text = $"{cardsTransform.GetChild(0).GetComponent<AICard>().characterString}";
+                characterName.text = $"{cardsTransform.GetChild(0).GetComponent<AICard>().characterName}";
+            }
         }
         else
         {

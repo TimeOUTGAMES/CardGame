@@ -176,9 +176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sfxSounds:
   - name: HoldCard
-    clip: {fileID: 8300000, guid: fa3ee77b119146b499d1099cb5ecc9ce, type: 3}
+    clip: {fileID: 8300000, guid: 76b20faeda78c3a459d12d3619932dfa, type: 3}
   - name: CardSelected
     clip: {fileID: 8300000, guid: 0f5fd623b148cae469b16925574bf6e8, type: 3}
-  - name: GetCards
-    clip: {fileID: 8300000, guid: 5199019fd553a37418ad8b715cc65f67, type: 3}
   sfxSources: {fileID: 8590706990865852013}

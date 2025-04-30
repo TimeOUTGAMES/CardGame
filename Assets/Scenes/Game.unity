@@ -809,6 +809,84 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1728834474
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 193695408157164449, guid: 6915a3d960a06de45a14ff6aaec59cbe, type: 3}
+      propertyPath: m_Name
+      value: Background
+      objectReference: {fileID: 0}
+    - target: {fileID: 193695408157164449, guid: 6915a3d960a06de45a14ff6aaec59cbe, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6540802564418138546, guid: 6915a3d960a06de45a14ff6aaec59cbe, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6540802564418138546, guid: 6915a3d960a06de45a14ff6aaec59cbe, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6540802564418138546, guid: 6915a3d960a06de45a14ff6aaec59cbe, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6540802564418138546, guid: 6915a3d960a06de45a14ff6aaec59cbe, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6540802564418138546, guid: 6915a3d960a06de45a14ff6aaec59cbe, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6540802564418138546, guid: 6915a3d960a06de45a14ff6aaec59cbe, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6540802564418138546, guid: 6915a3d960a06de45a14ff6aaec59cbe, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6540802564418138546, guid: 6915a3d960a06de45a14ff6aaec59cbe, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6540802564418138546, guid: 6915a3d960a06de45a14ff6aaec59cbe, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6540802564418138546, guid: 6915a3d960a06de45a14ff6aaec59cbe, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6540802564418138546, guid: 6915a3d960a06de45a14ff6aaec59cbe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6540802564418138546, guid: 6915a3d960a06de45a14ff6aaec59cbe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6540802564418138546, guid: 6915a3d960a06de45a14ff6aaec59cbe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6915a3d960a06de45a14ff6aaec59cbe, type: 3}
+--- !u!1 &1728834475 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 193695408157164449, guid: 6915a3d960a06de45a14ff6aaec59cbe, type: 3}
+  m_PrefabInstance: {fileID: 1728834474}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1830079753 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4300649655975858932, guid: 77e86d302465e2c45bd0e377b04e12c0, type: 3}
@@ -969,6 +1047,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
+      propertyPath: card
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
+      propertyPath: bgCard
+      value: 
+      objectReference: {fileID: 1728834475}
+    - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
       propertyPath: characterName
       value: 
       objectReference: {fileID: 342002713}
@@ -981,7 +1067,47 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 942695577}
     - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
+      propertyPath: modernEraAI.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
+      propertyPath: 'modernEraAI.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8435391579238222520, guid: e9385e68ee83eaa4789c51795495bbf3, type: 3}
+    - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
+      propertyPath: 'modernEraAI.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8435391579238222520, guid: 724915771bf3d804da3e3cfd4aaa0b8f, type: 3}
+    - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
+      propertyPath: 'modernEraAI.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8435391579238222520, guid: 24050508915e7214798a38a4e1f08b05, type: 3}
+    - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
+      propertyPath: 'modernEraAI.Array.data[3]'
+      value: 
+      objectReference: {fileID: 8435391579238222520, guid: 63c998187b57a45438fd2a58a003670d, type: 3}
+    - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
+      propertyPath: 'modernEraAI.Array.data[4]'
+      value: 
+      objectReference: {fileID: 8435391579238222520, guid: 617dc374a2149ce41b761ca9372725b9, type: 3}
+    - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
+      propertyPath: 'modernEraAI.Array.data[5]'
+      value: 
+      objectReference: {fileID: 8435391579238222520, guid: 0f01668e46d9d6d4387dcb92cd9e020c, type: 3}
+    - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
+      propertyPath: 'modernEraAI.Array.data[6]'
+      value: 
+      objectReference: {fileID: 8435391579238222520, guid: 705b0e8f7488029499f657088ecb4482, type: 3}
+    - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
+      propertyPath: 'modernEraAI.Array.data[7]'
+      value: 
+      objectReference: {fileID: 8435391579238222520, guid: fecfcf3e9d3f1954d870846e6201c41b, type: 3}
+    - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
       propertyPath: middleEraCardsList.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
+      propertyPath: modernEraCardsList.Array.size
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
@@ -1028,6 +1154,46 @@ PrefabInstance:
       propertyPath: 'middleEraCardsList.Array.data[9]'
       value: 
       objectReference: {fileID: 2265995096109407204, guid: 526309846a4feab488e938e1514f7915, type: 3}
+    - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
+      propertyPath: 'modernEraCardsList.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2265995096109407204, guid: 46baac5bb47fb004eb176da89c47c1e2, type: 3}
+    - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
+      propertyPath: 'modernEraCardsList.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2265995096109407204, guid: 31f7daa1a4fb3814eb395cbf6f073ae0, type: 3}
+    - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
+      propertyPath: 'modernEraCardsList.Array.data[2]'
+      value: 
+      objectReference: {fileID: 3437834291298304105, guid: 649e71107f69ca248b6178331bebe8c0, type: 3}
+    - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
+      propertyPath: 'modernEraCardsList.Array.data[3]'
+      value: 
+      objectReference: {fileID: 3437834291298304105, guid: d32fe167a85eb264190dcc81acf0ee54, type: 3}
+    - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
+      propertyPath: 'modernEraCardsList.Array.data[4]'
+      value: 
+      objectReference: {fileID: 7899696582023982438, guid: 163a5a9fedbc89c458a9acdd6628b2ab, type: 3}
+    - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
+      propertyPath: 'modernEraCardsList.Array.data[5]'
+      value: 
+      objectReference: {fileID: 7899696582023982438, guid: b84fd13f9b5576c4f8ffe82f71934eeb, type: 3}
+    - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
+      propertyPath: 'modernEraCardsList.Array.data[6]'
+      value: 
+      objectReference: {fileID: 7359926408150939088, guid: 67741252edab18b44be6a4f2c023b63c, type: 3}
+    - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
+      propertyPath: 'modernEraCardsList.Array.data[7]'
+      value: 
+      objectReference: {fileID: 7359926408150939088, guid: 26d41045c6f4f3e4c84cef9c94b96919, type: 3}
+    - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
+      propertyPath: 'modernEraCardsList.Array.data[8]'
+      value: 
+      objectReference: {fileID: 7986797608127062225, guid: 1298276f143085f45b2c981603f97296, type: 3}
+    - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
+      propertyPath: 'modernEraCardsList.Array.data[9]'
+      value: 
+      objectReference: {fileID: 7986797608127062225, guid: 9d91fe145641f724a88fedd557f3061c, type: 3}
     - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
       propertyPath: 'ancientEraCardsList.Array.data[0]'
       value: 
@@ -1129,3 +1295,4 @@ SceneRoots:
   - {fileID: 1839941367}
   - {fileID: 165050232}
   - {fileID: 942695576}
+  - {fileID: 1728834474}
