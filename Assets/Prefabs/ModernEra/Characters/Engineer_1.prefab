@@ -1,5 +1,80 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3335103426015263730
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8464582190706982887}
+  - component: {fileID: 5970495085108533351}
+  - component: {fileID: 3293700225132367985}
+  m_Layer: 5
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &8464582190706982887
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3335103426015263730}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8173887326946442254}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &5970495085108533351
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3335103426015263730}
+  m_CullTransparentMesh: 1
+--- !u!114 &3293700225132367985
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3335103426015263730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &3437834291298304105
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,19 +227,24 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   maxDistance: 1.5
-  rotation: 5
-  firstTouchPos: {x: 0, y: 0, z: 0}
+  cardSpeed: 30
+  currentEra: 1
   characterString: "Enerji altyap\u0131m\u0131z \xE7ok zay\u0131f. \xC7\xF6z\xFCm
     i\xE7in yenilenebilir enerji mi yoksa N\xFCkleer santraller mi yapal\u0131m"
   characterName: 'Noah '
   isSelected: 0
+  image: {fileID: 3293700225132367985}
+  fadeDuration: 0.5
   rightText: {fileID: 1997470953400699300}
   leftText: {fileID: 2649958237592902516}
-  cardSpeed: 30
-  healthChange: 5
-  farmerChange: 0
-  peopleChange: 0
-  economyChange: 5
+  leftMilitaryChange: 0
+  leftFarmChange: 0
+  leftPublicChange: 0
+  leftEconomyChange: 0
+  rightMilitaryChange: 0
+  rightFarmChange: 0
+  rightPublicChange: 0
+  rightEconomyChange: 0
 --- !u!1001 &7572174097162101786
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -311,7 +391,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1763932277805897748, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8464582190706982887}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
 --- !u!114 &1997470953400699300 stripped

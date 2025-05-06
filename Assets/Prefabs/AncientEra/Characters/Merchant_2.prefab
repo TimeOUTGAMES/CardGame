@@ -152,15 +152,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   maxDistance: 1.5
-  rotation: 5
-  firstTouchPos: {x: 0, y: 0, z: 0}
+  cardSpeed: 30
+  currentEra: 3
   characterString: "Ticaret ortaklar\u0131m\u0131z, daha fazla \xFCr\xFCn istiyor
     ama kaynaklar\u0131m\u0131z s\u0131n\u0131rl\u0131"
   characterName: 'Quetzalcoatl '
   isSelected: 0
   rightText: {fileID: 6138941700954609196}
   leftText: {fileID: 7660373610187392252}
-  cardSpeed: 30
+  leftMilitaryChange: 0
+  leftFarmChange: 0
+  leftPublicChange: 0
+  leftEconomyChange: 0
+  rightMilitaryChange: 0
+  rightFarmChange: 0
+  rightPublicChange: 0
+  rightEconomyChange: 0
 --- !u!1001 &2854248574276189074
 PrefabInstance:
   m_ObjectHideFlags: 0

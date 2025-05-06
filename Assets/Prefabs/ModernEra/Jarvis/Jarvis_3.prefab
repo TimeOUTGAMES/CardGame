@@ -151,9 +151,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   maxDistance: 1.5
+  cardSpeed: 30
+  currentEra: 1
   characterString: "Siz bayg\u0131nken d\xF6nemi biraz ara\u015Ft\u0131rd\u0131m
     afendim. sonu\xE7lar\u0131ma g\xF6re modern \xE7a\u011Fday\u0131z."
   characterName: Jarvis
   isSelected: 0
-  cardSpeed: 30
-  firstTouchPos: {x: 0, y: 0, z: 0}

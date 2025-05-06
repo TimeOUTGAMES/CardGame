@@ -152,8 +152,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   maxDistance: 1.5
-  rotation: 5
-  firstTouchPos: {x: 0, y: 0, z: 0}
+  cardSpeed: 30
+  currentEra: 1
   characterString: "G\u0131da israf\u0131 b\xFCy\xFCk bir sorun haline geldi. Kaynaklar\u0131m\u0131z
     bo\u015Fa gidiyor. Halk\u0131 bilin\xE7lendirsek mi yoksa bu durumu g\xF6rmezden
     mi gelsek?"
@@ -161,7 +161,14 @@ MonoBehaviour:
   isSelected: 0
   rightText: {fileID: 5884443031615861666}
   leftText: {fileID: 7986929461246828914}
-  cardSpeed: 30
+  leftMilitaryChange: 0
+  leftFarmChange: 0
+  leftPublicChange: 0
+  leftEconomyChange: 0
+  rightMilitaryChange: 0
+  rightFarmChange: 0
+  rightPublicChange: 0
+  rightEconomyChange: 0
 --- !u!1001 &2523151336592285212
 PrefabInstance:
   m_ObjectHideFlags: 0

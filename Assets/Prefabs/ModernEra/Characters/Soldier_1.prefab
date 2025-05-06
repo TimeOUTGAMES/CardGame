@@ -152,8 +152,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   maxDistance: 1.5
-  rotation: 5
-  firstTouchPos: {x: 0, y: 0, z: 0}
+  cardSpeed: 30
+  currentEra: 1
   characterString: "S\u0131n\u0131rlar\u0131m\u0131zda i\u015Fler \xE7\u0131\u011F\u0131r\u0131ndan
     \xE7\u0131k\u0131yor. Ka\xE7ak\xE7\u0131l\u0131k ve yasad\u0131\u015F\u0131 g\xF6\xE7\xFC
     art\u0131k kontrol edemiyoruz. Bu durumu \xE7\xF6zmek i\xE7in orduyu kullanal\u0131m
@@ -162,7 +162,14 @@ MonoBehaviour:
   isSelected: 0
   rightText: {fileID: 8876214752446464929}
   leftText: {fileID: 4922537265141584241}
-  cardSpeed: 30
+  leftMilitaryChange: 0
+  leftFarmChange: 0
+  leftPublicChange: 0
+  leftEconomyChange: 0
+  rightMilitaryChange: 0
+  rightFarmChange: 0
+  rightPublicChange: 0
+  rightEconomyChange: 0
 --- !u!1001 &685412790293868063
 PrefabInstance:
   m_ObjectHideFlags: 0

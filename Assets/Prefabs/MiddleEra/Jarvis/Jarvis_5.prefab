@@ -152,8 +152,7 @@ MonoBehaviour:
     m_Bits: 64
   maxDistance: 1.5
   cardSpeed: 30
-  currentEra: 1
-  characterString: "Durum \u015Fu ki  d\xF6nemin cumhurba\u015Fkan\u0131 aniden hayat\u0131n\u0131
-    kaybetti ve yerine ge\xE7ici olarak eski ba\u015Fkan\u0131 atad\u0131lar"
+  currentEra: 2
+  characterString: 5
   characterName: Jarvis
   isSelected: 0

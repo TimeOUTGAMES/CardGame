@@ -152,19 +152,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   maxDistance: 1.5
-  rotation: 5
-  firstTouchPos: {x: 0, y: 0, z: 0}
+  cardSpeed: 30
+  currentEra: 2
   characterString: "Askerlerin silahlar\u0131 yetersiz. \xDClke savunmas\u0131n\u0131
     artt\u0131rmam\u0131z i\xE7in te\xE7hizat \xFCretmem laz\u0131m"
   characterName: 'Jonathan '
   isSelected: 0
   rightText: {fileID: 6138941700954609196}
   leftText: {fileID: 7660373610187392252}
-  cardSpeed: 30
-  healthChange: 10
-  farmerChange: -5
-  peopleChange: 10
-  economyChange: 0
+  leftMilitaryChange: 0
+  leftFarmChange: 0
+  leftPublicChange: 0
+  leftEconomyChange: 0
+  rightMilitaryChange: 0
+  rightFarmChange: 0
+  rightPublicChange: 0
+  rightEconomyChange: 0
 --- !u!1001 &2854248574276189074
 PrefabInstance:
   m_ObjectHideFlags: 0

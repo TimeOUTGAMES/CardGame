@@ -8,11 +8,14 @@ public class GameManager : MonoBehaviour
 {
 
     [SerializeField]
-    public List<GameObject> modernEraCardsList, middleEraCardsList, ancientEraCardsList, modernEraAI, middleEraAI, ancientEraAI;
+    public List<GameObject> modernEraCardsList, middleEraCardsList, ancientEraCardsList, 
+    modernEraAIStart, middleEraAIStart, ancientEraAIStart,
+    modernEraAIEnd,middleEraAIEnd, ancientEraAIEnd;
     [SerializeField]
     public Transform cardsTransform;
-    [SerializeField]
-    public TextMeshProUGUI characterString, characterName;
+
+    public int currentEra = 1;
+
 
     public GameObject bgCard;
 
@@ -21,29 +24,51 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        print("deneme");
+    }
 
 
+    public void ManageEra()
+    {
+        if (cardsTransform.childCount > 0)
+        {
+            if (cardsTransform.GetChild(1).GetComponent<CharacterCard>() != null && 
+            cardsTransform.GetChild(1).GetComponent<CharacterCard>().currentEra!=currentEra)
+            {
+                currentEra = cardsTransform.GetChild(1).GetComponent<CharacterCard>().currentEra;
+                print("çağ değişti");
+            }
+            else if (cardsTransform.GetChild(1).GetComponent<AICard>() != null && 
+            cardsTransform.GetChild(1).GetComponent<AICard>().currentEra!=currentEra)
+            {
+                currentEra = cardsTransform.GetChild(1).GetComponent<AICard>().currentEra;
+                print("çağ değişti");
+            }
+        }
     }
 
     public void CreateCards()
     {
-        InstatiateAICards(modernEraAI);
+        InstatiateAICards(modernEraAIStart);
         InstantiateCard(modernEraCardsList);
-        InstatiateAICards(middleEraAI);
+        InstatiateAICards(modernEraAIEnd);
+
+
+        InstatiateAICards(middleEraAIStart);
         InstantiateCard(middleEraCardsList);
-        InstatiateAICards(ancientEraAI);
+        InstatiateAICards(middleEraAIEnd);
+        
+        InstatiateAICards(ancientEraAIStart);
         InstantiateCard(ancientEraCardsList);
+        InstatiateAICards(ancientEraAIEnd);
 
 
         bgCard.SetActive(true);
 
     }
 
-    // public GameObject cards;
-
     void InstatiateAICards(List<GameObject> cardList)
     {
-
         foreach (GameObject cardPrefab in cardList)
         {
             GameObject card = Instantiate(cardPrefab, cardsTransform);
@@ -56,7 +81,7 @@ public class GameManager : MonoBehaviour
 
     void InstantiateCard(List<GameObject> cardList)
     {
-         List<GameObject> allCards = cardList.OrderBy(x => Random.value).ToList();
+        List<GameObject> allCards = cardList.OrderBy(x => Random.value).ToList();
         foreach (GameObject cardPrefab in allCards)
         {
             GameObject card = Instantiate(cardPrefab, cardsTransform);
@@ -66,7 +91,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    //Kart� se�me sonucu di�er kart� g�sterir
+
     public void ShowCard()
     {
         if (cardsTransform.childCount > 0)
@@ -75,37 +100,15 @@ public class GameManager : MonoBehaviour
         }
         else print("game over");
     }
-    //Kartlar�n konu�ma metinlerini UI da g�sterir
-    public void ShowText()
-    {
 
-        if (cardsTransform.childCount > 0)
-        {
-            if (cardsTransform.GetChild(0).GetComponent<CharacterCard>() != null)
-            {
-                characterString.text = $"{cardsTransform.GetChild(0).GetComponent<CharacterCard>().characterString}";
-                characterName.text = $"{cardsTransform.GetChild(0).GetComponent<CharacterCard>().characterName}";
-            }
-            else if (cardsTransform.GetChild(0).GetComponent<AICard>() != null)
-            {
-                characterString.text = $"{cardsTransform.GetChild(0).GetComponent<AICard>().characterString}";
-                characterName.text = $"{cardsTransform.GetChild(0).GetComponent<AICard>().characterName}";
-            }
-        }
-        else
-        {
-            characterString.text = "";
-            characterName.text = "";
-        }
 
-    }
 
 
     void Update()
     {
 
         ShowCard();
-        ShowText();
+        ManageEra();
 
 
     }

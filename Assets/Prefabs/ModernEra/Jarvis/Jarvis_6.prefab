@@ -151,10 +151,10 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   maxDistance: 1.5
+  cardSpeed: 30
+  currentEra: 1
   characterString: "Biz ise bu ge\xE7ici ba\u015Fkan\u0131n yerine ge\xE7erek \xFClkeyi
     se\xE7im g\xFCn\xFCne kadar y\xF6netece\u011Fiz. Unutma ki resmi olarak ba\u015Fkan
     olmad\u0131\u011F\u0131m\u0131z i\xE7in ta\u015Fa eri\u015Femiyoruz"
   characterName: Jarvis
   isSelected: 0
-  cardSpeed: 30
-  firstTouchPos: {x: 0, y: 0, z: 0}

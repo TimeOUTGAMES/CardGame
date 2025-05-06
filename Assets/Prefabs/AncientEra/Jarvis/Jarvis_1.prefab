@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 4122692089750567896}
   - component: {fileID: -3033069241805221525}
   m_Layer: 6
-  m_Name: Jarvis_5
+  m_Name: Jarvis_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -152,8 +152,7 @@ MonoBehaviour:
     m_Bits: 64
   maxDistance: 1.5
   cardSpeed: 30
-  currentEra: 1
-  characterString: "Durum \u015Fu ki  d\xF6nemin cumhurba\u015Fkan\u0131 aniden hayat\u0131n\u0131
-    kaybetti ve yerine ge\xE7ici olarak eski ba\u015Fkan\u0131 atad\u0131lar"
+  currentEra: 3
+  characterString: "Uyan\u0131n efendim"
   characterName: Jarvis
   isSelected: 0

@@ -152,8 +152,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   maxDistance: 1.5
-  rotation: 5
-  firstTouchPos: {x: 0, y: 0, z: 0}
+  cardSpeed: 30
+  currentEra: 1
   characterString: "\xC7ift\xE7ilerimiz zor durumda. Artan maliyetler ve d\xFC\u015Fen
     verim onlar\u0131 k\xF6\u015Feye s\u0131k\u0131\u015Ft\u0131rd\u0131. Bir \u015Feyler
     yapmazsak k\u0131rsalda i\u015Fler daha k\xF6t\xFC olacak"
@@ -161,7 +161,14 @@ MonoBehaviour:
   isSelected: 0
   rightText: {fileID: 5884443031615861666}
   leftText: {fileID: 7986929461246828914}
-  cardSpeed: 30
+  leftMilitaryChange: 0
+  leftFarmChange: 0
+  leftPublicChange: 0
+  leftEconomyChange: 0
+  rightMilitaryChange: 0
+  rightFarmChange: 0
+  rightPublicChange: 0
+  rightEconomyChange: 0
 --- !u!1001 &2523151336592285212
 PrefabInstance:
   m_ObjectHideFlags: 0
