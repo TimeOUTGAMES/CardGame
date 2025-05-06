@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -96,29 +97,28 @@ public class BarControl : MonoBehaviour
     {
         if (slider == null || fillImage == null) return;
 
-        // Ýlk dokunulduðunda orijinal deðeri kaydet
         if (originalFill == -1f)
         {
             originalFill = fillImage.fillAmount;
         }
 
-        // Þu anki deðer + deðiþim
         float currentValue = slider.value;
         float previewValue = Mathf.Clamp(currentValue + value, minBarValue, maxBarValue);
         float normalizedPreviewValue = (previewValue - minBarValue) / (maxBarValue - minBarValue);
 
-        fillImage.fillAmount = normalizedPreviewValue;
-
         // Renk deðiþimi
         float intensity = Mathf.Min(Mathf.Abs(value) / 5f, 1f);
+        Color targetColor = Color.white;
 
         if (value > 0)
-            fillImage.color = Color.Lerp(Color.white, Color.green, intensity); // Artýþ
+            targetColor = Color.Lerp(Color.white, Color.green, intensity);
         else if (value < 0)
-            fillImage.color = Color.Lerp(Color.white, Color.red, intensity); // Azalýþ
-        else
-            fillImage.color = Color.white;
+            targetColor = Color.Lerp(Color.white, Color.red, intensity);
+
+        StopAllCoroutines(); // Önceki geçiþi iptal et (istersen bunu bar bazlý yapabilirsin)
+        StartCoroutine(AnimateBarPreview(fillImage, normalizedPreviewValue, targetColor));
     }
+
 
 
     private void ResetColor(Image image, ref float originalFill)
@@ -132,6 +132,29 @@ public class BarControl : MonoBehaviour
                 originalFill = -1f; // Sýfýrla ki bir sonraki dokunuþta tekrar kayýt yapýlsýn
             }
         }
+    }
+
+
+    private IEnumerator AnimateBarPreview(Image fillImage, float targetFill, Color targetColor)
+    {
+        float duration = 0.3f; // Geçiþ süresi
+        float time = 0f;
+        float startFill = fillImage.fillAmount;
+        Color startColor = fillImage.color;
+
+        while (time < duration)
+        {
+            time += Time.deltaTime;
+            float t = time / duration;
+
+            fillImage.fillAmount = Mathf.Lerp(startFill, targetFill, t);
+            fillImage.color = Color.Lerp(startColor, targetColor, t);
+
+            yield return null;
+        }
+
+        fillImage.fillAmount = targetFill;
+        fillImage.color = targetColor;
     }
 
 
