@@ -72,6 +72,7 @@ public class GameOpening : MonoBehaviour
             }
         }
     }
+    
 
     private void FinishOpeningSequence()
     {
