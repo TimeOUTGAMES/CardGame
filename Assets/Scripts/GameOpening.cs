@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameOpening : MonoBehaviour
@@ -12,15 +13,19 @@ public class GameOpening : MonoBehaviour
     [Header("Position Settings")]
     [SerializeField] private Vector3 firstCardPosition;
     [SerializeField] private Vector3 secondCardPosition;
+    [SerializeField] private Vector3 thirdCardPosition;
 
     private int currentCardIndex = 0;
     private bool isInitialized = false;
     private const float ARRIVAL_THRESHOLD = 0.1f;
 
+    public static GameOpening instance;
+
     private void Awake()
     {
         InstantiateCards();
         isInitialized = true;
+        instance = this;
     }
 
     private void Update()
@@ -74,10 +79,23 @@ public class GameOpening : MonoBehaviour
     }
     
 
+    public void en()
+    {
+        this.enabled = true;
+    }
+
+
+
     private void FinishOpeningSequence()
     {
+        /*foreach(Transform card in transform)
+        {
+            card.SetParent(GameManager.instance.transform, true);
+            GameManager.instance.RegisterTransitionCard(card.gameObject);
+        }*/
+        GameManager.instance.CreateCards();
+        this.enabled = false;
+        //Destroy(gameObject);
 
-        GameManager.instance.CreateCards();        
-        Destroy(gameObject);
     }
 }

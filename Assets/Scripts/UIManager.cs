@@ -22,6 +22,13 @@ public class UIManager : MonoBehaviour
 
     public void ShowText()
     {
+        if (gameManager.IsTransitioning)
+        {
+            characterString.text = "";
+            characterName.text = "";
+            currentEraName.text = "";
+            return;
+        }
 
         if (cardsTransform.childCount > 0)
         {
@@ -37,7 +44,6 @@ public class UIManager : MonoBehaviour
                 characterName.text = $"{cardsTransform.GetChild(0).GetComponent<AICard>().characterName}";
                 UpdateCurrentEraName(cardsTransform.GetChild(0).GetComponent<AICard>().currentEra);
             }
-            
         }
         else
         {
