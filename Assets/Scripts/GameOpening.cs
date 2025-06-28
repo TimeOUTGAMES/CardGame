@@ -20,6 +20,8 @@ public class GameOpening : MonoBehaviour
     private const float ARRIVAL_THRESHOLD = 0.1f;
 
     public static GameOpening instance;
+    private bool allCardsInstantiate = false;
+    public bool isMovedCards = false;
 
     private void Awake()
     {
@@ -50,16 +52,30 @@ public class GameOpening : MonoBehaviour
         }
     }
 
-    private void MoveCards()
+    public void MoveCards()
     {
-        // Check if we're done with all cards
+        if (isMovedCards) return;
+        print("moving cards");
         if (currentCardIndex >= transform.childCount)
         {
-            FinishOpeningSequence();
+            if (!allCardsInstantiate)
+            {
+                FinishOpeningSequence();
+                allCardsInstantiate = true;
+            }
+            foreach (Transform card in transform)
+            {
+                card.position = firstCardPosition;
+            }
+            currentCardIndex = 0;
+            isMovedCards = true;
+            GameManager.instance.cardsTransform.gameObject.SetActive(true);
+            GameManager.instance.bgCard.SetActive(true);
             return;
         }
-
-        // Get current card and move it
+        
+        
+        
         Transform currentCard = transform.GetChild(currentCardIndex);
         if (currentCard != null)
         {
@@ -72,8 +88,9 @@ public class GameOpening : MonoBehaviour
             // Check if card reached destination
             if (Vector3.Distance(currentCard.position, secondCardPosition) < ARRIVAL_THRESHOLD)
             {
-                AudioManager.instance.Play("HoldCard");
+                //AudioManager.instance.Play("HoldCard");
                 currentCardIndex++;
+                
             }
         }
     }
@@ -87,12 +104,7 @@ public class GameOpening : MonoBehaviour
 
 
     private void FinishOpeningSequence()
-    {
-        /*foreach(Transform card in transform)
-        {
-            card.SetParent(GameManager.instance.transform, true);
-            GameManager.instance.RegisterTransitionCard(card.gameObject);
-        }*/
+    {        
         GameManager.instance.CreateCards();
         this.enabled = false;
         //Destroy(gameObject);

@@ -82,7 +82,7 @@ public abstract class Cards : MonoBehaviour
         if (distance >= maxDistance)
         {
             // Card has been swiped far enough
-            AudioManager.instance.Play("CardSelected");
+            //AudioManager.instance.Play("CardSelected");
             isSelected = true;            
             Destroy(gameObject);
         }

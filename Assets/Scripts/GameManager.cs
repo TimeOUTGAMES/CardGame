@@ -23,15 +23,12 @@ public class GameManager : MonoBehaviour
     public bool IsTransitioning => isTransitioning;
 
     public Vector3 secondCardPosition; 
-    public Vector3 thirdCardPosition;
+    public Vector3 thirdCardPosition;    
 
-    private List<GameObject> transitionCards = new List<GameObject>();
-
-    public static GameManager instance;
+    public static GameManager instance;    
     private void Awake()
     {
-        instance = this;
-        print("deneme");
+        instance = this;        
 
         if (whiteFlashEffect == null)
         {
@@ -48,28 +45,25 @@ public class GameManager : MonoBehaviour
             int newEra = -1;
             if (cardsTransform.childCount > 0)
             {
-                if (cardsTransform.GetChild(0).GetComponent<CharacterCard>() != null &&
-                cardsTransform.GetChild(0).GetComponent<CharacterCard>().currentEra != currentEra)
-                {
-                    newEra = cardsTransform.GetChild(0).GetComponent<CharacterCard>().currentEra;
-                    print("çağ değişti");
+                //if (cardsTransform.GetChild(0).GetComponent<CharacterCard>() != null &&
+                //cardsTransform.GetChild(0).GetComponent<CharacterCard>().currentEra != currentEra)
+                //{
+                //    newEra = cardsTransform.GetChild(0).GetComponent<CharacterCard>().currentEra;                    
 
-                }
-                else if (cardsTransform.GetChild(0).GetComponent<AICard>() != null &&
+                //}
+                if (cardsTransform.GetChild(0).GetComponent<AICard>() != null &&
                 cardsTransform.GetChild(0).GetComponent<AICard>().currentEra != currentEra)
                 {
                     newEra = cardsTransform.GetChild(0).GetComponent<AICard>().currentEra;
-                    print("çağ değişti");
-
+                    GameOpening.instance.isMovedCards = false;
                 }
             }
 
             if (newEra != -1)
             {
-                currentEra = newEra;
-                Debug.Log("Çağ değişti → Yeni çağ: " + currentEra);
-                whiteFlashEffect.Play();
-                GameOpening.instance.en();
+                currentEra = newEra;                
+                whiteFlashEffect.Play();               
+                
                 //StartCoroutine(MoveCardDown(transitionCards, secondCardPosition, thirdCardPosition, 30f));
             }
         }
@@ -183,11 +177,7 @@ public class GameManager : MonoBehaviour
             {
                 firstCard.gameObject.SetActive(true);
             }
-        }
-        else
-        {
-            print("game over");
-        }
+        }        
     }
 
 
