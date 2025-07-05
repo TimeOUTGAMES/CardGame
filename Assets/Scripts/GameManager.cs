@@ -23,7 +23,8 @@ public class GameManager : MonoBehaviour
     public bool IsTransitioning => isTransitioning;
 
     public Vector3 secondCardPosition; 
-    public Vector3 thirdCardPosition;    
+    public Vector3 thirdCardPosition;
+    private bool allCardsInstantiate = false;
 
     public static GameManager instance;    
     private void Awake()
@@ -54,77 +55,25 @@ public class GameManager : MonoBehaviour
                 if (cardsTransform.GetChild(0).GetComponent<AICard>() != null &&
                 cardsTransform.GetChild(0).GetComponent<AICard>().currentEra != currentEra)
                 {
-                    newEra = cardsTransform.GetChild(0).GetComponent<AICard>().currentEra;
-                    GameOpening.instance.isMovedCards = false;
+                    newEra = cardsTransform.GetChild(0).GetComponent<AICard>().currentEra;                    
+                    StartCoroutine(GameOpening.Instance.DealCards());
+                    whiteFlashEffect.Play();
                 }
             }
 
             if (newEra != -1)
             {
                 currentEra = newEra;                
-                whiteFlashEffect.Play();               
-                
-                //StartCoroutine(MoveCardDown(transitionCards, secondCardPosition, thirdCardPosition, 30f));
+                    
             }
         }
-    }
-
-    /*public void RegisterTransitionCard(GameObject card)
-    {
-        card.SetActive(false);
-        transitionCards.Add(card);
-    }
-
-    public IEnumerator MoveCardDown(List<GameObject> cards, Vector3 secondCardPosition, Vector3 thirdCardPosition, float speed)
-    {
-        isTransitioning = true;
-        bgCard.SetActive(false);
-
-        // Oyun kartlarını geçici olarak gizle
-        SetGameCardsVisible(false);
-
-
-        foreach (GameObject card in cards)
-        {
-            card.SetActive(true);
-            card.transform.position = secondCardPosition;
-
-            while (Vector3.Distance(card.transform.position, thirdCardPosition) > 0.05f)
-            {
-                card.transform.position = Vector3.MoveTowards(card.transform.position, thirdCardPosition, speed * Time.deltaTime);
-                yield return null;
-            }
-
-            AudioManager.instance?.Play("HoldCard");
-            card.SetActive(false);
-        }
-
-
-        // Oyun kartlarını tekrar görünür yap
-        SetGameCardsVisible(true);
-        bgCard.SetActive(true);
-        isTransitioning = false;
-    }
-
-
-
-    private void SetGameCardsVisible(bool visible)
-    {
-        foreach (Transform child in cardsTransform)
-        {
-            child.gameObject.SetActive(false); // Hepsini kapat
-        }
-
-        if (visible && cardsTransform.childCount > 0)
-        {
-            cardsTransform.GetChild(0).gameObject.SetActive(true); // Sadece ilk kartı aç
-        }
-    }*/
+    }   
 
 
     public void CreateCards()
     {
-
+        if (allCardsInstantiate) return;
+        allCardsInstantiate = true;
         InstatiateAICards(modernEraAIStart);
         InstantiateCard(modernEraCardsList);
         InstatiateAICards(modernEraAIEnd);
@@ -134,11 +83,8 @@ public class GameManager : MonoBehaviour
         InstatiateAICards(ancientEraAIStart);
         InstantiateCard(ancientEraCardsList);
         InstatiateAICards(ancientEraAIEnd);
-  
-
 
         bgCard.SetActive(true);
-
     }
 
     void InstatiateAICards(List<GameObject> cardList)
@@ -168,12 +114,12 @@ public class GameManager : MonoBehaviour
 
     public void ShowCard()
     {
-        //if (isTransitioning) return;
+       
 
         if (cardsTransform.childCount > 0)
         {
             Transform firstCard = cardsTransform.GetChild(0);
-            if (!firstCard.gameObject.activeSelf) // Eğer zaten görünüyorsa tekrar açma
+            if (!firstCard.gameObject.activeSelf) 
             {
                 firstCard.gameObject.SetActive(true);
             }
@@ -182,8 +128,7 @@ public class GameManager : MonoBehaviour
 
 
     void Update()
-    {
-        //if (isTransitioning) return;
+    {        
         ShowCard();
         ManageEra();
 

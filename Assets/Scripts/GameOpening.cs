@@ -1,113 +1,65 @@
+using System;
 using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
-
+using DG.Tweening;
 public class GameOpening : MonoBehaviour
 {
-    [Header("Card Settings")]
-    [SerializeField] private GameObject card;
-    [SerializeField] private int cardCount = 5;
-    [SerializeField] private float cardSpeed = 5f;
-    [SerializeField] private float delay = 0.2f;
-
-    [Header("Position Settings")]
-    [SerializeField] private Vector3 firstCardPosition;
-    [SerializeField] private Vector3 secondCardPosition;
-    [SerializeField] private Vector3 thirdCardPosition;
-
-    private int currentCardIndex = 0;
-    private bool isInitialized = false;
-    private const float ARRIVAL_THRESHOLD = 0.1f;
-
-    public static GameOpening instance;
-    private bool allCardsInstantiate = false;
-    public bool isMovedCards = false;
+    [SerializeField] GameObject cardPrefab;
+    [SerializeField] GameObject fadePrefab;
+    [SerializeField] private GameObject firstCard;
+    [SerializeField] AudioClip cardSound;
+    public Transform targetPosition;
+    public float spawnDelay = 0.2f;
+    public Vector3 startOffset = new Vector3(-1000, 0, 0);
+    public Vector3 endOffset = new Vector3(1000, 0, 0);
+    public int cardNumbers = 5;
+    public static GameOpening Instance;
 
     private void Awake()
     {
-        InstantiateCards();
-        isInitialized = true;
-        instance = this;
+        Instance = this;
+    }
+    void Start()
+    {
+        StartCoroutine(DealCards());
     }
 
-    private void Update()
+    public IEnumerator DealCards()
     {
-        if (isInitialized)
+        Vector3 offsetValue = endOffset;
+        SpriteRenderer spriteRenderer = null;
+        for (int i = 0; i < cardNumbers; i++)
         {
-            MoveCards();
-        }
-    }
+            // Kart oluştur
+            GameObject card = Instantiate(cardPrefab, transform);
+            card.transform.position = targetPosition.position + startOffset;
+            AudioSource.PlayClipAtPoint(cardSound,Vector3.zero);
+            //card.transform.localScale = Vector3.zero;
 
-    private void InstantiateCards()
-    {
-        if (card == null)
-        {
-            Debug.LogError("Card prefab is not assigned!");
-            return;
+            // DOTween ile animasyon: Ölçekle büyüsün ve pozisyona gelsin
+            card.transform.DOMove(targetPosition.position + offsetValue, 0.4f).SetEase(Ease.OutCubic);
+            offsetValue += endOffset;
+            
+            // Sıradaki karta geçmeden önce bekle
+            yield return new WaitForSeconds(spawnDelay);
         }
-
-        for (int i = 0; i < cardCount; i++)
-        {
-            Instantiate(card, firstCardPosition, Quaternion.identity, transform);
-        }
-    }
-
-    public void MoveCards()
-    {
-        if (isMovedCards) return;
-        print("moving cards");
-        if (currentCardIndex >= transform.childCount)
-        {
-            if (!allCardsInstantiate)
-            {
-                FinishOpeningSequence();
-                allCardsInstantiate = true;
-            }
-            foreach (Transform card in transform)
-            {
-                card.position = firstCardPosition;
-            }
-            currentCardIndex = 0;
-            isMovedCards = true;
-            GameManager.instance.cardsTransform.gameObject.SetActive(true);
-            GameManager.instance.bgCard.SetActive(true);
-            return;
-        }
+        yield return new WaitForSeconds(spawnDelay * 5);
+        GameObject fade = Instantiate(fadePrefab, transform);
+        fade.transform.position = targetPosition.position + offsetValue;
+        spriteRenderer = fade.GetComponent<SpriteRenderer>();
+        Color fadedColor = new Color(1f, 1f, 1f, 1f); // Beyaz ton
+// veya daha soluk yapmak istersen
+// Color fadedColor = new Color(0.85f, 0.85f, 0.85f, 1f);
+        spriteRenderer.DOFade(1, 0.5f).SetEase(Ease.InQuad)
+                    .OnComplete(() =>
+                    {
+                        GameManager.instance.CreateCards();
+                        GameManager.instance.cardsTransform.gameObject.SetActive(true);
+                        GameManager.instance.bgCard.SetActive(true);
+                        spriteRenderer.DOFade(0f, 0.5f).SetEase(Ease.InQuad);
+                            
+                    });
         
-        
-        
-        Transform currentCard = transform.GetChild(currentCardIndex);
-        if (currentCard != null)
-        {
-            currentCard.position = Vector3.MoveTowards(
-                currentCard.position,
-                secondCardPosition,
-                cardSpeed * Time.deltaTime
-            );
-
-            // Check if card reached destination
-            if (Vector3.Distance(currentCard.position, secondCardPosition) < ARRIVAL_THRESHOLD)
-            {
-                //AudioManager.instance.Play("HoldCard");
-                currentCardIndex++;
-                
-            }
-        }
-    }
-    
-
-    public void en()
-    {
-        this.enabled = true;
-    }
-
-
-
-    private void FinishOpeningSequence()
-    {        
-        GameManager.instance.CreateCards();
-        this.enabled = false;
-        //Destroy(gameObject);
-
     }
 }

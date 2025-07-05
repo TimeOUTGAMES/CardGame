@@ -1010,7 +1010,7 @@ MonoBehaviour:
   firstCard: {fileID: 0}
   cardSound: {fileID: 8300000, guid: 76b20faeda78c3a459d12d3619932dfa, type: 3}
   targetPosition: {fileID: 222892811}
-  spawnDelay: 0.12
+  spawnDelay: 0.1
   startOffset: {x: -1000, y: 1000, z: 0}
   endOffset: {x: 0, y: 0, z: 0}
   cardNumbers: 15
@@ -1388,15 +1388,15 @@ PrefabInstance:
       objectReference: {fileID: 8435391579238222520, guid: 9207b1386115bdd48b9d0b45e2a6eae2, type: 3}
     - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
       propertyPath: middleEraCardsList.Array.size
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
       propertyPath: modernEraCardsList.Array.size
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
       propertyPath: ancientEraCardsList.Array.size
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
       propertyPath: 'middleEraAIStart.Array.data[0]'

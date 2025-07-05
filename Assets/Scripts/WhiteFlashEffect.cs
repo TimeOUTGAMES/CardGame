@@ -1,43 +1,39 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class WhiteFlashEffect : MonoBehaviour
 {
-    public Image whiteOverlay; // Canvas'taki beyaz Image
+    public Image whiteOverlay;
     public float fadeDuration = 5f;
-    public static WhiteFlashEffect instance; // Singleton ï¿½rneï¿½i
+    public static WhiteFlashEffect Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     public void Play()
     {
-        whiteOverlay.color = new Color(1, 1, 1, 1); // Tam opak
+        // Baþlangýçta tamamen beyaz görünür yap
+        whiteOverlay.color = new Color(1, 1, 1, 1);
         gameObject.SetActive(true);
-        //GameOpening.instance.enabled = true;
+
         GameManager.instance.cardsTransform.gameObject.SetActive(false);
         GameManager.instance.bgCard.SetActive(false);
-        StartCoroutine(FadeOut());
-    }
 
-    IEnumerator FadeOut()
-    {
-        yield return new WaitForSeconds(.5f);
-        float timer = 0f;
-        while (timer < fadeDuration)
+        // .5f saniye bekle ve sonra fade baþlat
+        DOVirtual.DelayedCall(0.5f, () =>
         {
-            timer += Time.deltaTime;
-            float alpha = Mathf.Lerp(1f, 0f, timer / fadeDuration);
-            whiteOverlay.color = new Color(1, 1, 1, alpha);
-            
-            yield return null;
-        }
-        yield return new WaitForSeconds(1f);
-        whiteOverlay.color = new Color(1, 1, 1, 0);
-        gameObject.SetActive(false);    
-        //GameOpening.instance.enabled = false;
-    }
-
-    private void Update()
-    {
-        GameOpening.instance.MoveCards();
+            whiteOverlay.DOFade(0f, fadeDuration).OnComplete(() =>
+            {
+                // Fade tamamlandýktan sonra 1 saniye bekle ve sonra kapat
+                DOVirtual.DelayedCall(1f, () =>
+                {
+                    whiteOverlay.color = new Color(1, 1, 1, 0);
+                    gameObject.SetActive(false);
+                });
+            });
+        });
     }
 }

@@ -159,6 +159,8 @@ MonoBehaviour:
     yapmazsak k\u0131rsalda i\u015Fler daha k\xF6t\xFC olacak"
   characterName: 'James '
   isSelected: 0
+  image: {fileID: 2358338259309246580}
+  fadeDuration: 0.5
   rightText: {fileID: 5884443031615861666}
   leftText: {fileID: 7986929461246828914}
   leftMilitaryChange: 0
@@ -261,6 +263,14 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 3822900836324902920, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3822900836324902920, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 4572609326140427738, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_PresetInfoIsWorld
       value: 1
@@ -281,6 +291,18 @@ PrefabInstance:
       propertyPath: m_fontColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5607912560358244206, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980580436664261782, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7980580436664261782, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.8
+      objectReference: {fileID: 0}
     - target: {fileID: 8263459933574327742, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_text
       value: "Yat\u0131r\u0131m sa\u011Flay\u0131n"
@@ -297,6 +319,10 @@ PrefabInstance:
       propertyPath: m_fontColor.r
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8263459933574327742, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 8603057109702104695, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_Name
       value: Canvas
@@ -306,6 +332,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+--- !u!114 &2358338259309246580 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 269803537879639656, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+  m_PrefabInstance: {fileID: 2523151336592285212}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &4287065974157723144 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1763932277805897748, guid: ead458125e7b6b94ea289bff2b222186, type: 3}

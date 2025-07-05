@@ -1,6 +1,8 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
+
 
 public abstract class Cards : MonoBehaviour
 {
@@ -34,11 +36,23 @@ public abstract class Cards : MonoBehaviour
     {
         originalPosition = transform.position;
         startPosX = originalPosition.x;
-        if (image != null)
-        {
-            StartCoroutine(FadeAlpha(image, fadeDuration));
-        }
+        PlayWhiteFlash();
+       
     }
+
+    protected void PlayWhiteFlash()
+    {
+        if (image == null) return;
+
+        Color originalColor = image.color;
+        image.color = new Color(1, 1, 1, 0.5f);
+
+        image.DOFade(0f, fadeDuration).SetEase(Ease.InQuad);
+            
+             
+             
+    }
+
 
     protected virtual void Update()
     {
@@ -49,31 +63,7 @@ public abstract class Cards : MonoBehaviour
         {
             ManageCard();
         }
-    }
-    protected IEnumerator FadeAlpha(Image img, float duration)
-    {
-        Color color = img.color;
-        float startAlpha = 250f / 255f; // 125 değeri 0-1 aralığına çevrildi
-        float endAlpha = 0f;
-        float elapsed = 0f;
-
-        // Başlangıç alfa değeri ayarla
-        color.a = startAlpha;
-        img.color = color;
-
-        while (elapsed < duration)
-        {
-            elapsed += Time.deltaTime;
-            float newAlpha = Mathf.Lerp(startAlpha, endAlpha, elapsed / duration);
-            color.a = newAlpha;
-            img.color = color;
-            yield return null;
-        }
-
-        // Bitiş alfa değeri kesin olarak ayarla
-        color.a = endAlpha;
-        img.color = color;
-    }
+    }  
 
     protected virtual void ManageCard()
     {
