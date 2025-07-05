@@ -3,15 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
+
+public class EndOfEraCardData
+{
+    public string cardName;
+    public Image cardImage;
+}
 
 public class GameManager : MonoBehaviour
 {
-
     [SerializeField]
-    public List<GameObject> modernEraCardsList, middleEraCardsList, ancientEraCardsList, 
+    public List<GameObject> modernEraCardsList, middleEraCardsList, ancientEraCardsList,
     modernEraAIStart, middleEraAIStart, ancientEraAIStart,
-    modernEraAIEnd,middleEraAIEnd, ancientEraAIEnd;
+    modernEraAIEnd, middleEraAIEnd, ancientEraAIEnd;
     [SerializeField]
     public Transform cardsTransform;
 
@@ -22,14 +28,17 @@ public class GameManager : MonoBehaviour
     private bool isTransitioning = false;
     public bool IsTransitioning => isTransitioning;
 
-    public Vector3 secondCardPosition; 
+    public Vector3 secondCardPosition;
     public Vector3 thirdCardPosition;
     private bool allCardsInstantiate = false;
 
-    public static GameManager instance;    
+
+    public EndOfEraCardData militaryEnd, farmEnd, healthEnd, publicEnd;
+
+    public static GameManager instance;
     private void Awake()
     {
-        instance = this;        
+        instance = this;
 
         if (whiteFlashEffect == null)
         {
@@ -55,7 +64,7 @@ public class GameManager : MonoBehaviour
                 if (cardsTransform.GetChild(0).GetComponent<AICard>() != null &&
                 cardsTransform.GetChild(0).GetComponent<AICard>().currentEra != currentEra)
                 {
-                    newEra = cardsTransform.GetChild(0).GetComponent<AICard>().currentEra;                    
+                    newEra = cardsTransform.GetChild(0).GetComponent<AICard>().currentEra;
                     StartCoroutine(GameOpening.Instance.DealCards());
                     whiteFlashEffect.Play();
                 }
@@ -63,17 +72,18 @@ public class GameManager : MonoBehaviour
 
             if (newEra != -1)
             {
-                currentEra = newEra;                
-                    
+                currentEra = newEra;
+
             }
         }
-    }   
+    }
 
 
     public void CreateCards()
     {
         if (allCardsInstantiate) return;
         allCardsInstantiate = true;
+        Instantiate(cardsTransform);
         InstatiateAICards(modernEraAIStart);
         InstantiateCard(modernEraCardsList);
         InstatiateAICards(modernEraAIEnd);
@@ -114,24 +124,63 @@ public class GameManager : MonoBehaviour
 
     public void ShowCard()
     {
-       
+
 
         if (cardsTransform.childCount > 0)
         {
             Transform firstCard = cardsTransform.GetChild(0);
-            if (!firstCard.gameObject.activeSelf) 
+            if (!firstCard.gameObject.activeSelf)
             {
                 firstCard.gameObject.SetActive(true);
             }
-        }        
+        }
+    }
+
+    public void EndOfEraCardManager()
+    {
+        switch (BarControl.Instance.CheckBarValue())
+        {
+            case "Military":
+                militaryEnd.cardImage.gameObject.SetActive(true);                
+                break;
+            case "Farm":
+                farmEnd.cardImage.gameObject.SetActive(true);                
+                break;
+            case "Public":
+                publicEnd.cardImage.gameObject.SetActive(true);                
+                break;
+            case "Economy":
+                healthEnd.cardImage.gameObject.SetActive(true);                
+                break;
+            default:
+                Debug.LogError("Geçersiz bar adı: " + BarControl.Instance.CheckBarValue());
+                break;
+
+        }
+    }
+
+    public void RestartGame()
+    {
+        if (EndOfEraCard.Instance.isSelected)
+        {
+            Destroy(cardsTransform);
+            allCardsInstantiate = false;
+            whiteFlashEffect.Play();
+            bgCard.SetActive(false);
+            currentEra = 1;
+            BarControl.Instance.InitAllvars();
+            CreateCards();
+
+
+        }
     }
 
 
     void Update()
-    {        
+    {
         ShowCard();
         ManageEra();
-
+        EndOfEraCardManager();
     }
 
 }

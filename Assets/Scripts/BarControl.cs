@@ -1,4 +1,8 @@
-﻿using System.Collections;
+﻿using NUnit.Framework;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,6 +11,7 @@ public class BarData
 {
     public Slider slider;
     public Image fillImage;
+    public string barName;
 
     [HideInInspector] public float originalValue = -1f;
     [HideInInspector] public float originalFill = -1f;
@@ -15,22 +20,58 @@ public class BarData
 
 public class BarControl : MonoBehaviour
 {
-    [Header("Bars")]
+    
     public BarData economyBar;
     public BarData farmBar;
     public BarData publicBar;
     public BarData militaryBar;
 
-    [Header("Settings")]
+    private List<BarData> bars;
+
+
     public float maxBarValue = 100f;
     public float minBarValue = 0f;
 
+    public bool isEndOfEra = false;
+
+    public static BarControl Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+    private void Update()
+    {
+        CheckBarValue();
+    }
+
+    public String CheckBarValue()
+    {
+        foreach(BarData barData in bars)
+        {
+            if (barData.slider.value <= 0)
+            {
+                isEndOfEra = true;
+                return barData.barName;
+            }
+        }
+        return "";
+    }
+
     void Start()
+    {
+        InitAllvars();
+    }
+
+    public void InitAllvars()
     {
         InitBar(economyBar);
         InitBar(farmBar);
         InitBar(publicBar);
         InitBar(militaryBar);
+
+        bars = new List<BarData> { economyBar, farmBar, publicBar, militaryBar };
     }
 
     private void InitBar(BarData bar)
