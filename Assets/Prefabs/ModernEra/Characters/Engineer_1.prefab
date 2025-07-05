@@ -237,12 +237,12 @@ MonoBehaviour:
   fadeDuration: 0.5
   rightText: {fileID: 1997470953400699300}
   leftText: {fileID: 2649958237592902516}
-  leftMilitaryChange: 0
-  leftFarmChange: 0
+  leftMilitaryChange: 10
+  leftFarmChange: -10
   leftPublicChange: 0
   leftEconomyChange: 0
-  rightMilitaryChange: 0
-  rightFarmChange: 0
+  rightMilitaryChange: 20
+  rightFarmChange: -20
   rightPublicChange: 0
   rightEconomyChange: 0
 --- !u!1001 &7572174097162101786

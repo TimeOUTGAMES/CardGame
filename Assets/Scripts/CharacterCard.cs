@@ -19,22 +19,18 @@ public class CharacterCard : Cards
     [SerializeField] private float rightPublicChange;
     [SerializeField] private float rightEconomyChange;
 
-    // Threshold for activation of preview effects
     private const float DIRECTION_THRESHOLD = 0.1f;
-    
-    // Remove singleton if possible and unnecessary
-    public static CharacterCard instance { get; private set; }
+
+    private static CharacterCard _instance;
+    public static CharacterCard instance => _instance;
 
     private void Awake()
     {
-        instance = this;
-        
-        // Use GetComponent or other proper reference methods instead of FindAnyObjectByType
-        // FindAnyObjectByType is inefficient and can cause performance issues
+        _instance = this;
+
         if (barControl == null)
         {
-            barControl = GameObject.FindObjectOfType<BarControl>();
-            
+            barControl = FindFirstObjectByType<BarControl>();
             if (barControl == null)
             {
                 Debug.LogWarning("BarControl reference not found. Bar effects won't work.");
@@ -42,19 +38,17 @@ public class CharacterCard : Cards
         }
     }
 
-    // No need to override Update if it only calls the base method
-    
     protected override void MoveCard(Vector3 moveAmount)
     {
         base.MoveCard(moveAmount);
-        
+
         if (!isTouching || barControl == null) return;
-        
+
         float direction = transform.position.x - startPosX;
-        
+
         if (Mathf.Abs(direction) > DIRECTION_THRESHOLD)
         {
-            if (direction > 0) // Right swipe
+            if (direction > 0) // Sað
             {
                 barControl.PreviewBarEffects(
                     rightEconomyChange,
@@ -63,7 +57,7 @@ public class CharacterCard : Cards
                     rightMilitaryChange
                 );
             }
-            else // Left swipe
+            else // Sol
             {
                 barControl.PreviewBarEffects(
                     leftEconomyChange,
@@ -73,35 +67,25 @@ public class CharacterCard : Cards
                 );
             }
         }
-        else
-        {
-            barControl.ResetBarColors(); // Reset if movement is minimal
-        }
     }
 
     protected override void ReturnToOriginalPosition()
     {
         base.ReturnToOriginalPosition();
-        
         SetTextVisibility(false, false);
+
+        if (barControl != null)
+        {
+            barControl.ResetBarColors();
+        }
     }
 
     protected override void RotateCard()
     {
         base.RotateCard();
-        
+
         bool isRightSwipe = transform.position.x > startPosX;
         SetTextVisibility(isRightSwipe, !isRightSwipe);
-    }
-
-    // Helper method to manage text visibility
-    private void SetTextVisibility(bool showRightText, bool showLeftText)
-    {
-        if (rightText != null && leftText != null)
-        {
-            rightText.gameObject.SetActive(showRightText);
-            leftText.gameObject.SetActive(showLeftText);
-        }
     }
 
     protected override void ManageCard()
@@ -113,29 +97,39 @@ public class CharacterCard : Cards
             ApplyBarEffect();
         }
     }
-    
+
     private void ApplyBarEffect()
     {
         if (barControl == null) return;
 
         float direction = transform.position.x - startPosX;
-        
-        if (direction > 0) // Right swipe effect application
+
+        if (direction > 0) // Sað
         {
-            ApplyEffects(rightEconomyChange, rightFarmChange, rightPublicChange, rightMilitaryChange);
+            barControl.ApplyEffects(
+                rightEconomyChange,
+                rightFarmChange,
+                rightPublicChange,
+                rightMilitaryChange
+            );
         }
-        else if (direction < 0) // Left swipe effect application
+        else if (direction < 0) // Sol
         {
-            ApplyEffects(leftEconomyChange, leftFarmChange, leftPublicChange, leftMilitaryChange);
+            barControl.ApplyEffects(
+                leftEconomyChange,
+                leftFarmChange,
+                leftPublicChange,
+                leftMilitaryChange
+            );
         }
     }
-    
-    // Helper method to apply all effects at once
-    private void ApplyEffects(float economyChange, float farmChange, float publicChange, float militaryChange)
+
+    private void SetTextVisibility(bool showRightText, bool showLeftText)
     {
-        barControl.ModifyEconomy(economyChange);
-        barControl.ModifyFarm(farmChange);
-        barControl.ModifyPublic(publicChange);
-        barControl.ModifyMilitary(militaryChange);
+        if (rightText != null)
+            rightText.gameObject.SetActive(showRightText);
+
+        if (leftText != null)
+            leftText.gameObject.SetActive(showLeftText);
     }
 }

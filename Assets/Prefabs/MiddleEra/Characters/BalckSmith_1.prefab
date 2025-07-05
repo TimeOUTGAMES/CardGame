@@ -158,14 +158,16 @@ MonoBehaviour:
     artt\u0131rmam\u0131z i\xE7in te\xE7hizat \xFCretmem laz\u0131m"
   characterName: 'Jonathan '
   isSelected: 0
+  image: {fileID: 0}
+  fadeDuration: 0.5
   rightText: {fileID: 6138941700954609196}
   leftText: {fileID: 7660373610187392252}
-  leftMilitaryChange: 0
-  leftFarmChange: 0
+  leftMilitaryChange: 5
+  leftFarmChange: 5
   leftPublicChange: 0
   leftEconomyChange: 0
-  rightMilitaryChange: 0
-  rightFarmChange: 0
+  rightMilitaryChange: 5
+  rightFarmChange: 5
   rightPublicChange: 0
   rightEconomyChange: 0
 --- !u!1001 &2854248574276189074

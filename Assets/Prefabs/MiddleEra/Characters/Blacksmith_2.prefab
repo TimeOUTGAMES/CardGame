@@ -158,16 +158,18 @@ MonoBehaviour:
     var. ikisi aras\u0131nda bir se\xE7im yapmam\u0131z laz\u0131m"
   characterName: 'Jonathan '
   isSelected: 0
+  image: {fileID: 0}
+  fadeDuration: 0.5
   rightText: {fileID: 6138941700954609196}
   leftText: {fileID: 7660373610187392252}
   leftMilitaryChange: 0
-  leftFarmChange: 0
+  leftFarmChange: 5
   leftPublicChange: 0
-  leftEconomyChange: 0
+  leftEconomyChange: 5
   rightMilitaryChange: 0
-  rightFarmChange: 0
+  rightFarmChange: 5
   rightPublicChange: 0
-  rightEconomyChange: 0
+  rightEconomyChange: 5
 --- !u!1001 &2854248574276189074
 PrefabInstance:
   m_ObjectHideFlags: 0

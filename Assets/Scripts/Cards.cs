@@ -176,7 +176,7 @@ public abstract class Cards : MonoBehaviour
 
         if (!hasPlayedHoldSound)
         {
-            AudioManager.instance.Play("HoldCard");
+            //AudioManager.instance.Play("HoldCard");
             hasPlayedHoldSound = true;
         }
     }
