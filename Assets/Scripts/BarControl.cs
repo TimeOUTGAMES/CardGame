@@ -36,6 +36,7 @@ public class BarControl : MonoBehaviour
 
     public static BarControl Instance;
 
+
     private void Awake()
     {
         Instance = this;

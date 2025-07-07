@@ -33,7 +33,20 @@ public class GameManager : MonoBehaviour
     private bool allCardsInstantiate = false;
 
 
+    public Color ancientColor;
+    public Color middleColor;
+    public Color modenrColor;
+    
+    public Age currentAge = Age.MODERN_ERA;
+    public List<Image> barsToChange;
     public EndOfEraCardData militaryEnd, farmEnd, healthEnd, publicEnd;
+
+    public enum Age
+    {
+        ANCIENT_ERA,
+        MIDDLE_ERA,
+        MODERN_ERA,
+    }
 
     public static GameManager instance;
     private void Awake()
@@ -73,8 +86,52 @@ public class GameManager : MonoBehaviour
             if (newEra != -1)
             {
                 currentEra = newEra;
+                switch (currentEra)
+                {
+                    case 1:
+                        currentAge = Age.MODERN_ERA;
+                        break;
+                    case 2:
+                        currentAge = Age.MIDDLE_ERA;
+                        break;
+                    case 3:
+                        currentAge = Age.ANCIENT_ERA;
+                        break;
+                    default:
+                        print("gay");
+                        break;
+
+                        
+                }
+                ChangeAgeColor(currentAge);
+                Debug.Log(currentEra);
 
             }
+        }
+    }
+
+    private void ChangeAgeColor(Age age)
+    {
+        switch (age)
+        {
+            case Age.ANCIENT_ERA:
+                foreach (Image img in barsToChange)
+                {
+                    img.color = ancientColor;
+                }
+                break;
+            case Age.MIDDLE_ERA:
+                foreach (Image img in barsToChange)
+                {
+                    img.color = middleColor;
+                }
+                break;
+            case Age.MODERN_ERA:
+                foreach (Image img in barsToChange)
+                {
+                    img.color = modenrColor;
+                }
+                break;
         }
     }
 
