@@ -1,6 +1,7 @@
+using System;
 using TMPro;
 using UnityEngine;
-
+using DG.Tweening;
 public class UIManager : MonoBehaviour
 {
 
@@ -8,18 +9,23 @@ public class UIManager : MonoBehaviour
     private Transform cardsTransform;
     [SerializeField]
     public TextMeshProUGUI characterString, characterName, currentEraName;
+    public static UIManager instance;
+
+    [SerializeField] private float characterStringFadeSpeed = 0.4f;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     void Start()
     {
         gameManager = GameManager.instance;
         cardsTransform = gameManager.cardsTransform;
+        
     }
 
-
-    void Update()
-    {
-        ShowText();
-    }
-
+    
     public void ShowText()
     {
         if (gameManager.IsTransitioning)
@@ -34,20 +40,32 @@ public class UIManager : MonoBehaviour
         {
             if (cardsTransform.GetChild(0).GetComponent<CharacterCard>() != null)
             {
+                Color color = characterString.color;
+                color.a = 0;
+                characterString.color = color;
+                
                 characterString.text = $"{cardsTransform.GetChild(0).GetComponent<CharacterCard>().characterString}";
+                characterString.DOFade(1f, characterStringFadeSpeed).SetEase(Ease.InOutSine);
+                
                 characterName.text = $"{cardsTransform.GetChild(0).GetComponent<CharacterCard>().characterName}";
                 UpdateCurrentEraName(cardsTransform.GetChild(0).GetComponent<CharacterCard>().currentEra);
             }
             else if (cardsTransform.GetChild(0).GetComponent<AICard>() != null)
             {
+                Color color = characterString.color;
+                color.a = 0;
+                characterString.color = color;
+                
                 characterString.text = $"{cardsTransform.GetChild(0).GetComponent<AICard>().characterString}";
+                characterString.DOFade(1f, characterStringFadeSpeed).SetEase(Ease.InOutSine);
+                
                 characterName.text = $"{cardsTransform.GetChild(0).GetComponent<AICard>().characterName}";
                 UpdateCurrentEraName(cardsTransform.GetChild(0).GetComponent<AICard>().currentEra);
             }
         }
         else
         {
-            characterString.text = "";
+            characterString.text = "Malsin";
             characterName.text = "";
         }
 

@@ -1,3 +1,4 @@
+using DG.Tweening;
 using TMPro;
 using UnityEngine;
 
@@ -6,6 +7,7 @@ public class CharacterCard : Cards
     [Header("UI References")]
     [SerializeField] private TextMeshProUGUI rightText;
     [SerializeField] private TextMeshProUGUI leftText;
+    [SerializeField] [Range(0, 1)] private float textFadeDistance = 0.5f;
 
     [Header("Left Swipe Effects")]
     [SerializeField] private float leftMilitaryChange;
@@ -18,6 +20,7 @@ public class CharacterCard : Cards
     [SerializeField] private float rightFarmChange;
     [SerializeField] private float rightPublicChange;
     [SerializeField] private float rightEconomyChange;
+    
 
     private const float DIRECTION_THRESHOLD = 0.1f;
 
@@ -45,10 +48,18 @@ public class CharacterCard : Cards
         if (!isTouching || barControl == null) return;
 
         float direction = transform.position.x - startPosX;
+        
+        float fadeDirection = Mathf.Clamp(direction, -textFadeDistance, textFadeDistance);
+
+        float leftAlpha = Mathf.InverseLerp(0f, -textFadeDistance, fadeDirection); 
+        float rightAlpha = Mathf.InverseLerp(0f, textFadeDistance, fadeDirection);
+        
+        SetTextAlpha(leftText, leftAlpha);
+        SetTextAlpha(rightText, rightAlpha);
 
         if (Mathf.Abs(direction) > DIRECTION_THRESHOLD)
         {
-            if (direction > 0) // Sað
+            if (direction > 0) // Saï¿½
             {
                 barControl.PreviewBarEffects(
                     rightEconomyChange,
@@ -85,7 +96,8 @@ public class CharacterCard : Cards
         base.RotateCard();
 
         bool isRightSwipe = transform.position.x > startPosX;
-        SetTextVisibility(isRightSwipe, !isRightSwipe);
+        // SetTextVisibility(isRightSwipe, !isRightSwipe);
+        SetTextVisibility(true,true);
     }
 
     protected override void ManageCard()
@@ -104,7 +116,7 @@ public class CharacterCard : Cards
 
         float direction = transform.position.x - startPosX;
 
-        if (direction > 0) // Sað
+        if (direction > 0) // Saï¿½
         {
             barControl.ApplyEffects(
                 rightEconomyChange,
@@ -124,12 +136,19 @@ public class CharacterCard : Cards
         }
     }
 
-    private void SetTextVisibility(bool showRightText, bool showLeftText)
+    private void SetTextVisibility(bool showRightText, bool showLeftText)  //BURAYI DÃœZELT BETO
     {
         if (rightText != null)
             rightText.gameObject.SetActive(showRightText);
-
+                
         if (leftText != null)
             leftText.gameObject.SetActive(showLeftText);
+    }
+    
+    void SetTextAlpha(TextMeshProUGUI text, float alpha)
+    {
+        Color c = text.color;
+        c.a = alpha;
+        text.color = c;
     }
 }

@@ -514,6 +514,10 @@ PrefabInstance:
       objectReference: {fileID: 1387102096}
     - target: {fileID: 8021096133229865908, guid: 77e86d302465e2c45bd0e377b04e12c0, type: 3}
       propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8021096133229865908, guid: 77e86d302465e2c45bd0e377b04e12c0, type: 3}
+      propertyPath: m_SortingLayerID
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8340887856395389999, guid: 77e86d302465e2c45bd0e377b04e12c0, type: 3}
@@ -542,11 +546,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8340887856395389999, guid: 77e86d302465e2c45bd0e377b04e12c0, type: 3}
       propertyPath: m_fontSizeMax
-      value: 60
+      value: 55
       objectReference: {fileID: 0}
     - target: {fileID: 8340887856395389999, guid: 77e86d302465e2c45bd0e377b04e12c0, type: 3}
       propertyPath: m_fontSizeMin
-      value: 50
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 8340887856395389999, guid: 77e86d302465e2c45bd0e377b04e12c0, type: 3}
       propertyPath: m_fontSizeBase
@@ -1006,6 +1010,7 @@ MonoBehaviour:
   characterString: {fileID: 942695577}
   characterName: {fileID: 342002713}
   currentEraName: {fileID: 1590529317}
+  characterStringFadeSpeed: 0.4
 --- !u!4 &1538102488
 Transform:
   m_ObjectHideFlags: 0

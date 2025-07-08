@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using Random = UnityEngine.Random;
 
 
 public class EndOfEraCardData
@@ -40,6 +42,8 @@ public class GameManager : MonoBehaviour
     public Age currentAge = Age.MODERN_ERA;
     public List<Image> barsToChange;
     public EndOfEraCardData militaryEnd, farmEnd, healthEnd, publicEnd;
+    
+    private UIManager uiManager;
 
     public enum Age
     {
@@ -58,6 +62,7 @@ public class GameManager : MonoBehaviour
             Debug.LogError("WhiteFlashEffect bağlantısı yapılmamış! GameManager içinde null.");
         }
     }
+    
 
     public void ManageEra()
     {
@@ -189,6 +194,8 @@ public class GameManager : MonoBehaviour
             if (!firstCard.gameObject.activeSelf)
             {
                 firstCard.gameObject.SetActive(true);
+                uiManager.ShowText();
+                
             }
         }
     }
@@ -240,4 +247,8 @@ public class GameManager : MonoBehaviour
         EndOfEraCardManager();
     }
 
+    private void Start()
+    {
+        uiManager = UIManager.instance;
+    }
 }
