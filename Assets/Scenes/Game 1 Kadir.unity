@@ -785,6 +785,10 @@ PrefabInstance:
       value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6999345994834729801, guid: 77e86d302465e2c45bd0e377b04e12c0, type: 3}
+      propertyPath: tresholdValue
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6999345994834729801, guid: 77e86d302465e2c45bd0e377b04e12c0, type: 3}
       propertyPath: farmBar.slider
       value: 
       objectReference: {fileID: 1331028661}

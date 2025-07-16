@@ -169,12 +169,12 @@ MonoBehaviour:
   leftText: {fileID: 7660373610187392252}
   textFadeDistance: 0.5
   leftMilitaryChange: 0
-  leftFarmChange: 10
+  leftFarmChange: 20
   leftPublicChange: 0
   leftEconomyChange: 10
   rightMilitaryChange: -20
   rightFarmChange: 0
-  rightPublicChange: 20
+  rightPublicChange: 10
   rightEconomyChange: 0
 --- !u!222 &3444213210301578372
 CanvasRenderer:
