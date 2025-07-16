@@ -43,6 +43,9 @@ public class CharacterCard : Cards
 
     protected override void MoveCard(Vector3 moveAmount)
     {
+        leftText.gameObject.SetActive(true);
+        rightText.gameObject.SetActive(true);
+        
         base.MoveCard(moveAmount);
 
         if (!isTouching || barControl == null) return;
@@ -84,7 +87,9 @@ public class CharacterCard : Cards
     {
         base.ReturnToOriginalPosition();
         SetTextVisibility(false, false);
-
+        SetTextAlpha(leftText,0);
+        SetTextAlpha(rightText,0);
+        
         if (barControl != null)
         {
             barControl.ResetBarColors();
@@ -96,8 +101,7 @@ public class CharacterCard : Cards
         base.RotateCard();
 
         bool isRightSwipe = transform.position.x > startPosX;
-        // SetTextVisibility(isRightSwipe, !isRightSwipe);
-        SetTextVisibility(true,true);
+        
     }
 
     protected override void ManageCard()
@@ -138,11 +142,7 @@ public class CharacterCard : Cards
 
     private void SetTextVisibility(bool showRightText, bool showLeftText)  //BURAYI DÜZELT BETO
     {
-        if (rightText != null)
-            rightText.gameObject.SetActive(showRightText);
-                
-        if (leftText != null)
-            leftText.gameObject.SetActive(showLeftText);
+   		//Null
     }
     
     void SetTextAlpha(TextMeshProUGUI text, float alpha)
@@ -151,4 +151,5 @@ public class CharacterCard : Cards
         c.a = alpha;
         text.color = c;
     }
+    
 }

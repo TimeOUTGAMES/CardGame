@@ -1,16 +1,10 @@
 fileFormatVersion: 2
-guid: 6e129e422dc024c4cb3aa57e390434dd
+guid: 1084120a0d9beaf4d8aa443ac707d081
 TextureImporter:
   internalIDToNameTable:
   - first:
       213: 5543885359478068036
     second: Military_0
-  - first:
-      213: 417495670818384367
-    second: Military_1
-  - first:
-      213: -217171681772165803
-    second: Military_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -43,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -115,19 +109,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -135,10 +116,10 @@ TextureImporter:
       name: Military_0
       rect:
         serializedVersion: 2
-        x: 117
-        y: 319
-        width: 194
-        height: 193
+        x: 222
+        y: 88
+        width: 800
+        height: 931
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -149,50 +130,6 @@ TextureImporter:
       bones: []
       spriteID: 443dd279c56dfec40800000000000000
       internalID: 5543885359478068036
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Military_1
-      rect:
-        serializedVersion: 2
-        x: 319
-        y: 0
-        width: 193
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: fe9a462c91e3bc500800000000000000
-      internalID: 417495670818384367
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Military_2
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 300
-        height: 279
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 55522bc81837cfcf0800000000000000
-      internalID: -217171681772165803
       vertices: []
       indices: 
       edges: []
@@ -212,8 +149,6 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       Military_0: 5543885359478068036
-      Military_1: 417495670818384367
-      Military_2: -217171681772165803
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

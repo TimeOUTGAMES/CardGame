@@ -78,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 20
   m_Sprite: {fileID: -312738567421119420, guid: 996a0672116c96946a15ff48e55beadc, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -158,8 +158,11 @@ MonoBehaviour:
     i\xE7in yard\u0131m edin"
   characterName: Charles
   isSelected: 0
+  image: {fileID: 0}
+  fadeDuration: 0.5
   rightText: {fileID: 6138941700954609196}
   leftText: {fileID: 7660373610187392252}
+  textFadeDistance: 0.5
   leftMilitaryChange: 0
   leftFarmChange: 0
   leftPublicChange: 0

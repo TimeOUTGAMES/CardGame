@@ -76,9 +76,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingLayerID: 609240825
+  m_SortingLayer: 2
+  m_SortingOrder: 20
   m_Sprite: {fileID: -5027959210547854933, guid: 3d327cc420567474d9a802ed0a2125d2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -163,6 +163,7 @@ MonoBehaviour:
   fadeDuration: 0.5
   rightText: {fileID: 1997470953400699300}
   leftText: {fileID: 2649958237592902516}
+  textFadeDistance: 0.5
   leftMilitaryChange: 0
   leftFarmChange: 0
   leftPublicChange: 0
@@ -265,7 +266,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2048123503638836289, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_SortingOrder
-      value: 3
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2048123503638836289, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 609240825
       objectReference: {fileID: 0}
     - target: {fileID: 3822900836324902920, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_SizeDelta.y

@@ -76,9 +76,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingLayerID: 609240825
+  m_SortingLayer: 2
+  m_SortingOrder: 20
   m_Sprite: {fileID: 6589679319236728911, guid: cd2d8f6be111b134fb7e2029b113de0b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -164,12 +164,13 @@ MonoBehaviour:
   fadeDuration: 0.5
   rightText: {fileID: 8876214752446464929}
   leftText: {fileID: 4922537265141584241}
-  leftMilitaryChange: 0
-  leftFarmChange: 0
+  textFadeDistance: 0.5
+  leftMilitaryChange: 5
+  leftFarmChange: 5
   leftPublicChange: 0
-  leftEconomyChange: 0
-  rightMilitaryChange: 0
-  rightFarmChange: 0
+  leftEconomyChange: 5
+  rightMilitaryChange: 10
+  rightFarmChange: 10
   rightPublicChange: 0
   rightEconomyChange: 0
 --- !u!1001 &685412790293868063
@@ -262,7 +263,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2048123503638836289, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_SortingOrder
-      value: 3
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 2048123503638836289, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      propertyPath: m_SortingLayerID
+      value: 609240825
       objectReference: {fileID: 0}
     - target: {fileID: 3822900836324902920, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_SizeDelta.y
@@ -277,6 +282,10 @@ PrefabInstance:
       value: "Diplomatik yakla\u015F\u0131n"
       objectReference: {fileID: 0}
     - target: {fileID: 5607912560358244206, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      propertyPath: m_fontSize
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5607912560358244206, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_fontColor.b
       value: 0
       objectReference: {fileID: 0}
@@ -289,8 +298,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5607912560358244206, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 5607912560358244206, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7574464019639832702, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7980580436664261782, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_SizeDelta.y
@@ -301,6 +318,10 @@ PrefabInstance:
       value: Tepe tepe kullan
       objectReference: {fileID: 0}
     - target: {fileID: 8263459933574327742, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      propertyPath: m_fontSize
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263459933574327742, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_fontColor.b
       value: 0
       objectReference: {fileID: 0}
@@ -313,12 +334,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8263459933574327742, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
+    - target: {fileID: 8263459933574327742, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_HorizontalAlignment
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8603057109702104695, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 9171688019763764843, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

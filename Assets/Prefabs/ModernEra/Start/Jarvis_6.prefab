@@ -77,7 +77,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 20
   m_Sprite: {fileID: 8059217895119224125, guid: 9d38bef478f6911439ab477c3f1d4160, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -158,3 +158,5 @@ MonoBehaviour:
     olmad\u0131\u011F\u0131m\u0131z i\xE7in ta\u015Fa eri\u015Femiyoruz"
   characterName: Jarvis
   isSelected: 0
+  image: {fileID: 0}
+  fadeDuration: 0.5
