@@ -1,13 +1,19 @@
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterCard : Cards
 {
     [Header("UI References")]
     [SerializeField] private TextMeshProUGUI rightText;
     [SerializeField] private TextMeshProUGUI leftText;
-    [SerializeField] [Range(0, 1)] private float textFadeDistance = 0.5f;
+    [SerializeField] [Range(0, 2)] private float textFadeDistance = 0.5f;
+
+    [SerializeField] private GameObject fadePanelGO;
+
+    private Image fadeImage;
+    private RectTransform fadeRect;
 
     [Header("Left Swipe Effects")]
     [SerializeField] private float leftMilitaryChange;
@@ -20,7 +26,9 @@ public class CharacterCard : Cards
     [SerializeField] private float rightFarmChange;
     [SerializeField] private float rightPublicChange;
     [SerializeField] private float rightEconomyChange;
-    
+
+    [SerializeField] private AudioClip cardAppearClip;
+    private AudioSource audioSource;
 
     private const float DIRECTION_THRESHOLD = 0.1f;
 
@@ -30,6 +38,14 @@ public class CharacterCard : Cards
     private void Awake()
     {
         _instance = this;
+
+        audioSource = GetComponent<AudioSource>();
+
+        if (fadePanelGO != null)
+        {
+            fadeImage = fadePanelGO.GetComponent<Image>();
+            fadeRect = fadePanelGO.GetComponent<RectTransform>();
+        }
 
         if (barControl == null)
         {
@@ -41,28 +57,48 @@ public class CharacterCard : Cards
         }
     }
 
+    private void OnEnable()
+    {
+        if (audioSource != null && cardAppearClip != null)
+        {
+            audioSource.PlayOneShot(cardAppearClip);
+        }
+    }
+
     protected override void MoveCard(Vector3 moveAmount)
     {
         leftText.gameObject.SetActive(true);
         rightText.gameObject.SetActive(true);
-        
+
         base.MoveCard(moveAmount);
 
         if (!isTouching || barControl == null) return;
 
         float direction = transform.position.x - startPosX;
-        
         float fadeDirection = Mathf.Clamp(direction, -textFadeDistance, textFadeDistance);
+        Debug.Log(fadeDirection);
+        float leftAlpha = Mathf.InverseLerp(0f, textFadeDistance, fadeDirection);
+        float rightAlpha = Mathf.InverseLerp(0f, -textFadeDistance, fadeDirection);
 
-        float leftAlpha = Mathf.InverseLerp(0f, -textFadeDistance, fadeDirection); 
-        float rightAlpha = Mathf.InverseLerp(0f, textFadeDistance, fadeDirection);
-        
-        SetTextAlpha(leftText, leftAlpha);
-        SetTextAlpha(rightText, rightAlpha);
+        // Text transparanlığı
+        SetAlpha(leftText, leftAlpha);
+        SetAlpha(rightText, rightAlpha);
+
+        // Unified fade
+        float fadeAmount = Mathf.InverseLerp(0f, textFadeDistance, Mathf.Abs(fadeDirection));
+        SetAlpha(fadeImage, fadeAmount);
+
+        // Ayna efekti
+        if (fadeRect != null)
+        {
+            Vector3 originalScale = fadeRect.localScale;
+            fadeRect.localScale = new Vector3(direction > 0 ? Mathf.Abs(originalScale.x) : -Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
+
+        }
 
         if (Mathf.Abs(direction) > DIRECTION_THRESHOLD)
         {
-            if (direction > 0) // Sa�
+            if (direction > 0)
             {
                 barControl.PreviewBarEffects(
                     rightEconomyChange,
@@ -71,7 +107,7 @@ public class CharacterCard : Cards
                     rightMilitaryChange
                 );
             }
-            else // Sol
+            else
             {
                 barControl.PreviewBarEffects(
                     leftEconomyChange,
@@ -87,9 +123,9 @@ public class CharacterCard : Cards
     {
         base.ReturnToOriginalPosition();
         SetTextVisibility(false, false);
-        SetTextAlpha(leftText,0);
-        SetTextAlpha(rightText,0);
-        
+        SetAlpha(leftText, 0);
+        SetAlpha(rightText, 0);
+        if (fadeImage != null) SetAlpha(fadeImage, 0);
         if (barControl != null)
         {
             barControl.ResetBarColors();
@@ -99,15 +135,12 @@ public class CharacterCard : Cards
     protected override void RotateCard()
     {
         base.RotateCard();
-
-        bool isRightSwipe = transform.position.x > startPosX;
-        
+        // İsteğe bağlı yön efekti vs.
     }
 
     protected override void ManageCard()
     {
         base.ManageCard();
-
         if (distance >= maxDistance)
         {
             ApplyBarEffect();
@@ -120,7 +153,7 @@ public class CharacterCard : Cards
 
         float direction = transform.position.x - startPosX;
 
-        if (direction > 0) // Sa�
+        if (direction > 0)
         {
             barControl.ApplyEffects(
                 rightEconomyChange,
@@ -128,8 +161,10 @@ public class CharacterCard : Cards
                 rightPublicChange,
                 rightMilitaryChange
             );
+            
+          
         }
-        else if (direction < 0) // Sol
+        else if (direction < 0)
         {
             barControl.ApplyEffects(
                 leftEconomyChange,
@@ -137,19 +172,23 @@ public class CharacterCard : Cards
                 leftPublicChange,
                 leftMilitaryChange
             );
+            
+           
         }
     }
 
-    private void SetTextVisibility(bool showRightText, bool showLeftText)  //BURAYI DÜZELT BETO
+    private void SetAlpha(Graphic graphic, float alpha)
     {
-   		//Null
-    }
-    
-    void SetTextAlpha(TextMeshProUGUI text, float alpha)
-    {
-        Color c = text.color;
+        if (graphic == null) return;
+        Color c = graphic.color;
         c.a = alpha;
-        text.color = c;
+        graphic.color = c;
+        
+        
     }
-    
+
+    private void SetTextVisibility(bool showRightText, bool showLeftText)
+    {
+        //null
+    }
 }

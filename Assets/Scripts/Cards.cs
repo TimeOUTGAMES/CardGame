@@ -10,6 +10,9 @@ public abstract class Cards : MonoBehaviour
     [SerializeField] protected LayerMask cardLayermask;
     [SerializeField] protected float maxDistance = 1.5f;
     [SerializeField] protected int cardSpeed = 10;
+    
+    [SerializeField] protected Vector3 cardEnd = new Vector3(1000,0,0);
+    [SerializeField] protected float cardEndDuration = 0.5f;
 
     [SerializeField] public int currentEra;
     
@@ -26,14 +29,15 @@ public abstract class Cards : MonoBehaviour
     protected Vector3 firstTouchPos;
     protected bool hasPlayedHoldSound = false;
     protected BarControl barControl;
-    public Image image;
-    public float fadeDuration = 0.5f;
+    protected SpriteRenderer image;
+    protected float fadeDuration = 0.15f;
 
     // Touch sensitivity constants
     private const float ROTATION_FACTOR = 10f;
 
     protected virtual void Start()
     {
+        image = GetComponent<SpriteRenderer>();
         originalPosition = transform.position;
         startPosX = originalPosition.x;
         PlayWhiteFlash();
@@ -45,9 +49,9 @@ public abstract class Cards : MonoBehaviour
         if (image == null) return;
 
         Color originalColor = image.color;
-        image.color = new Color(1, 1, 1, 0.5f);
-
-        image.DOFade(0f, fadeDuration).SetEase(Ease.InQuad);
+        originalColor.a = 0f;
+        image.color = originalColor;
+        image.DOFade(1f, fadeDuration).SetEase(Ease.InQuad);
             
              
              
@@ -73,8 +77,19 @@ public abstract class Cards : MonoBehaviour
         {
             // Card has been swiped far enough
             //AudioManager.instance.Play("CardSelected");
-            isSelected = true;            
-            Destroy(gameObject);
+            isSelected = true;
+            
+            float direction = transform.position.x - startPosX;
+            if (direction > 0)
+            {
+                transform.DOMove(cardEnd, cardEndDuration).SetEase(Ease.OutQuad).OnComplete(() => Destroy(gameObject));
+            }
+            else if (direction < 0)
+            {
+                transform.DOMove(-cardEnd, cardEndDuration).SetEase(Ease.OutQuad).OnComplete(() => Destroy(gameObject));
+            }
+           
+            
         }
         else
         {

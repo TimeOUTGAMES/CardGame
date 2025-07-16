@@ -152,6 +152,8 @@ MonoBehaviour:
     m_Bits: 64
   maxDistance: 1.5
   cardSpeed: 30
+  cardEnd: {x: 10, y: 0, z: 0}
+  cardEndDuration: 0.5
   currentEra: 1
   characterString: "\u0130\u015Fte bu! Uyanman\u0131za sevindim"
   characterName: Jarvis

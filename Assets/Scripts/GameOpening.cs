@@ -94,7 +94,7 @@ public class GameOpening : MonoBehaviour
                 GameManager.instance.cardsTransform.gameObject.SetActive(true);
                 GameManager.instance.bgCard.SetActive(true);
 
-                fadeRenderer.DOFade(0f, 0.5f).SetEase(Ease.InQuad);
+                fadeRenderer.DOFade(0f, 0.5f).SetEase(Ease.OutBack);
             });
         }
     }

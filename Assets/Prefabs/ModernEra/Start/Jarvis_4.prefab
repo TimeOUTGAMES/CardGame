@@ -152,6 +152,8 @@ MonoBehaviour:
     m_Bits: 64
   maxDistance: 1.5
   cardSpeed: 30
+  cardEnd: {x: 10, y: 0, z: 0}
+  cardEndDuration: 0.5
   currentEra: 1
   characterString: "Bu \xE7a\u011Fda \xE7ok partili bir sistem var ve biz de bu sistemden
     faydalanarak hedefimize ula\u015Faca\u011F\u0131z."

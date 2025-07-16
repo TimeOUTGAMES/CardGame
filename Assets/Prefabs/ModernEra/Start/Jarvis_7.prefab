@@ -152,6 +152,8 @@ MonoBehaviour:
     m_Bits: 64
   maxDistance: 1.5
   cardSpeed: 30
+  cardEnd: {x: 10, y: 0, z: 0}
+  cardEndDuration: 0.5
   currentEra: 1
   characterString: "Se\xE7im g\xFCn\xFC geldi\u011Finde ise yeni ba\u015Fkan\u0131n
     yerine ge\xE7erek ta\u015F\u0131 kullanaca\u011F\u0131z"
