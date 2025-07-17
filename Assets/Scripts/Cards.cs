@@ -31,6 +31,7 @@ public abstract class Cards : MonoBehaviour
     protected BarControl barControl;
     protected SpriteRenderer image;
     protected float fadeDuration = 0.15f;
+    protected bool isSwiped = false;
 
     // Touch sensitivity constants
     private const float ROTATION_FACTOR = 10f;
@@ -76,7 +77,13 @@ public abstract class Cards : MonoBehaviour
         if (distance >= maxDistance)
         {
             // Card has been swiped far enough
-            //AudioManager.instance.Play("CardSelected");
+            if (!isSwiped)
+            {
+                AudioManager.instance.Play("CardSelected");
+                isSwiped = true;
+            }
+
+
             isSelected = true;
             
             float direction = transform.position.x - startPosX;

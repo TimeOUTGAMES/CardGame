@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: NEY ?
+  m_text: SG
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e6b9b334cd564364c96bd076736ad913, type: 2}
   m_sharedMaterial: {fileID: 3971438887778130368, guid: e6b9b334cd564364c96bd076736ad913, type: 2}
@@ -314,7 +314,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: YOK KNK
+  m_text: TAMAM
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e6b9b334cd564364c96bd076736ad913, type: 2}
   m_sharedMaterial: {fileID: 3971438887778130368, guid: e6b9b334cd564364c96bd076736ad913, type: 2}
@@ -396,10 +396,10 @@ GameObject:
   - component: {fileID: 2974567718107504361}
   - component: {fileID: 72961558423906429}
   - component: {fileID: 829182414647860620}
-  - component: {fileID: 6322104234436441220}
   - component: {fileID: 7652238283695916035}
+  - component: {fileID: 7249927700884612645}
   m_Layer: 6
-  m_Name: Farmer_1
+  m_Name: Jarvis_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -465,7 +465,7 @@ SpriteRenderer:
   m_SortingLayerID: 609240825
   m_SortingLayer: 2
   m_SortingOrder: 10
-  m_Sprite: {fileID: 453791412862506042, guid: 78e2c10a3275fb945b20e46b693b8add, type: 3}
+  m_Sprite: {fileID: 8059217895119224125, guid: 9d38bef478f6911439ab477c3f1d4160, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -522,42 +522,6 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
---- !u!114 &6322104234436441220
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7899696582023982438}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9696fe1583c83b04497242d837de1e92, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardLayermask:
-    serializedVersion: 2
-    m_Bits: 64
-  maxDistance: 1.5
-  cardSpeed: 30
-  cardEnd: {x: 5, y: 0, z: 0}
-  cardEndDuration: 0.5
-  currentEra: 1
-  characterString: Aga Welcome !
-  characterName: James Watt
-  isSelected: 0
-  rightText: {fileID: 4705490839599937670}
-  leftText: {fileID: 3795590078573235912}
-  textFadeDistance: 0.5
-  fadePanelGO: {fileID: 5253240177188628431}
-  leftMilitaryChange: 10
-  leftFarmChange: 0
-  leftPublicChange: 10
-  leftEconomyChange: 0
-  rightMilitaryChange: 10
-  rightFarmChange: 0
-  rightPublicChange: -2
-  rightEconomyChange: 0
-  cardAppearClip: {fileID: 8300000, guid: 1579ea281b37b6442a77547683174dc7, type: 3}
 --- !u!82 &7652238283695916035
 AudioSource:
   m_ObjectHideFlags: 0
@@ -655,68 +619,45 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1001 &1432807368867640034
-PrefabInstance:
+--- !u!114 &7249927700884612645
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 4287065974157723144}
-    m_Modifications:
-    - target: {fileID: 1627085655505621511, guid: 2bd6aadfaddb53f45be89b4679f79fc8, type: 3}
-      propertyPath: m_Name
-      value: Eyes
-      objectReference: {fileID: 0}
-    - target: {fileID: 4542100505084381000, guid: 2bd6aadfaddb53f45be89b4679f79fc8, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4542100505084381000, guid: 2bd6aadfaddb53f45be89b4679f79fc8, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.44
-      objectReference: {fileID: 0}
-    - target: {fileID: 4542100505084381000, guid: 2bd6aadfaddb53f45be89b4679f79fc8, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4542100505084381000, guid: 2bd6aadfaddb53f45be89b4679f79fc8, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4542100505084381000, guid: 2bd6aadfaddb53f45be89b4679f79fc8, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4542100505084381000, guid: 2bd6aadfaddb53f45be89b4679f79fc8, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4542100505084381000, guid: 2bd6aadfaddb53f45be89b4679f79fc8, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4542100505084381000, guid: 2bd6aadfaddb53f45be89b4679f79fc8, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4542100505084381000, guid: 2bd6aadfaddb53f45be89b4679f79fc8, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4542100505084381000, guid: 2bd6aadfaddb53f45be89b4679f79fc8, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 2bd6aadfaddb53f45be89b4679f79fc8, type: 3}
---- !u!4 &3236560832301610410 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4542100505084381000, guid: 2bd6aadfaddb53f45be89b4679f79fc8, type: 3}
-  m_PrefabInstance: {fileID: 1432807368867640034}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7899696582023982438}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f573e4ea5b7ab04da905376781f6d6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cardLayermask:
+    serializedVersion: 2
+    m_Bits: 64
+  maxDistance: 1.5
+  cardSpeed: 30
+  cardEnd: {x: 5, y: 0, z: 0}
+  cardEndDuration: 0.5
+  currentEra: 1
+  characterString: "KALK ARTIK. U\xC7AN B\u0130R BEY\u0130NE D\xD6N\xDC\u015EM\xDC\u015E\xDCM
+    ! "
+  characterName: Jarwis Nega
+  isSelected: 0
+  rightText: {fileID: 4705490839599937670}
+  leftText: {fileID: 3795590078573235912}
+  textFadeDistance: 0.5
+  fadePanelGO: {fileID: 5253240177188628431}
+  leftMilitaryChange: 0
+  leftFarmChange: 0
+  leftPublicChange: 0
+  leftEconomyChange: 0
+  rightMilitaryChange: 0
+  rightFarmChange: 0
+  rightPublicChange: 0
+  rightEconomyChange: 0
+  cardPrefabRight: {fileID: 0}
+  cardPrefabLeft: {fileID: 0}
+  cardAppearClip: {fileID: 8300000, guid: 1579ea281b37b6442a77547683174dc7, type: 3}
 --- !u!1001 &2523151336592285212
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -885,9 +826,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1763932277805897748, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
       insertIndex: 0
       addedObject: {fileID: 7526615140991278858}
-    - targetCorrespondingSourceObject: {fileID: 1763932277805897748, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
-      insertIndex: 1
-      addedObject: {fileID: 3236560832301610410}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
 --- !u!224 &4287065974157723144 stripped

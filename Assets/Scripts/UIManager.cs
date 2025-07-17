@@ -62,6 +62,19 @@ public class UIManager : MonoBehaviour
                 characterName.text = $"{cardsTransform.GetChild(0).GetComponent<AICard>().characterName}";
                 UpdateCurrentEraName(cardsTransform.GetChild(0).GetComponent<AICard>().currentEra);
             }
+            
+            else if (cardsTransform.GetChild(0).GetComponent<SpecialCharacterCard>() != null)
+            {
+                Color color = characterString.color;
+                color.a = 0;
+                characterString.color = color;
+                
+                characterString.text = $"{cardsTransform.GetChild(0).GetComponent<SpecialCharacterCard>().characterString}";
+                characterString.DOFade(1f, characterStringFadeSpeed).SetEase(Ease.InOutSine);
+                
+                characterName.text = $"{cardsTransform.GetChild(0).GetComponent<SpecialCharacterCard>().characterName}";
+                UpdateCurrentEraName(cardsTransform.GetChild(0).GetComponent<SpecialCharacterCard>().currentEra);
+            }
         }
         else
         {

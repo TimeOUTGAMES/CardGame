@@ -3,13 +3,12 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharacterCard : Cards
+public class SpecialCharacterCard : Cards
 {
     [Header("UI References")]
     [SerializeField] private TextMeshProUGUI rightText;
     [SerializeField] private TextMeshProUGUI leftText;
     [SerializeField] [Range(0, 2)] private float textFadeDistance = 0.5f;
-
     [SerializeField] private GameObject fadePanelGO;
 
     private Image fadeImage;
@@ -27,23 +26,24 @@ public class CharacterCard : Cards
     [SerializeField] private float rightPublicChange;
     [SerializeField] private float rightEconomyChange;
 
+    [Header("Swipe-Based New Cards")]
+    [SerializeField] private GameObject cardPrefabRight;
+    [SerializeField] private GameObject cardPrefabLeft;
+    private Transform cardsTransform;
+
     [SerializeField] private AudioClip cardAppearClip;
     private AudioSource audioSource;
 
     private const float DIRECTION_THRESHOLD = 0.1f;
 
-    private static CharacterCard _instance;
-    public static CharacterCard instance => _instance;
-    
+    private bool isSpawned;
+
     private AudioManager audioManager;
 
     private void Awake()
     {
-        
-        _instance = this;
 
         audioSource = GetComponent<AudioSource>();
-
 
         if (fadePanelGO != null)
         {
@@ -65,6 +65,7 @@ public class CharacterCard : Cards
     {
         if (audioSource != null && cardAppearClip != null)
         {
+            cardsTransform = GameManager.instance.cardsTransform;
             audioManager = AudioManager.instance;
             audioSource.PlayOneShot(cardAppearClip);
         }
@@ -81,24 +82,24 @@ public class CharacterCard : Cards
 
         float direction = transform.position.x - startPosX;
         float fadeDirection = Mathf.Clamp(direction, -textFadeDistance, textFadeDistance);
-        Debug.Log(fadeDirection);
+
         float leftAlpha = Mathf.InverseLerp(0f, textFadeDistance, fadeDirection);
         float rightAlpha = Mathf.InverseLerp(0f, -textFadeDistance, fadeDirection);
 
-        // Text transparanlığı
         SetAlpha(leftText, leftAlpha);
         SetAlpha(rightText, rightAlpha);
 
-        // Unified fade
         float fadeAmount = Mathf.InverseLerp(0f, textFadeDistance, Mathf.Abs(fadeDirection));
         SetAlpha(fadeImage, fadeAmount);
 
-        // Ayna efekti
         if (fadeRect != null)
         {
             Vector3 originalScale = fadeRect.localScale;
-            fadeRect.localScale = new Vector3(direction > 0 ? Mathf.Abs(originalScale.x) : -Mathf.Abs(originalScale.x), originalScale.y, originalScale.z);
-
+            fadeRect.localScale = new Vector3(
+                direction > 0 ? Mathf.Abs(originalScale.x) : -Mathf.Abs(originalScale.x),
+                originalScale.y,
+                originalScale.z
+            );
         }
 
         if (Mathf.Abs(direction) > DIRECTION_THRESHOLD)
@@ -111,7 +112,6 @@ public class CharacterCard : Cards
                     rightPublicChange,
                     rightMilitaryChange
                 );
-
             }
             else
             {
@@ -138,18 +138,21 @@ public class CharacterCard : Cards
         }
     }
 
-    protected override void RotateCard()
-    {
-        base.RotateCard();
-        // İsteğe bağlı yön efekti vs.
-    }
-
     protected override void ManageCard()
     {
         base.ManageCard();
+
         if (distance >= maxDistance)
         {
             ApplyBarEffect();
+
+            bool isRightSwipe = transform.position.x > startPosX;
+
+            if (!isSpawned)
+            {
+                SpawnNewCardBasedOnSwipe(isRightSwipe);
+                isSpawned = true;
+            }
         }
     }
 
@@ -167,8 +170,6 @@ public class CharacterCard : Cards
                 rightPublicChange,
                 rightMilitaryChange
             );
-            
-          
         }
         else if (direction < 0)
         {
@@ -178,8 +179,19 @@ public class CharacterCard : Cards
                 leftPublicChange,
                 leftMilitaryChange
             );
-           
         }
+    }
+
+    private void SpawnNewCardBasedOnSwipe(bool rightSwipe)
+    {
+        GameObject prefabToSpawn = rightSwipe ? cardPrefabLeft : cardPrefabRight;
+        if (prefabToSpawn == null || cardsTransform == null) return;
+
+        GameObject newCard = Instantiate(prefabToSpawn, cardsTransform);
+        
+        int currentIndex = transform.GetSiblingIndex();
+        newCard.transform.SetSiblingIndex(currentIndex + 1);
+        newCard.SetActive(false);
     }
 
     private void SetAlpha(Graphic graphic, float alpha)
@@ -188,12 +200,10 @@ public class CharacterCard : Cards
         Color c = graphic.color;
         c.a = alpha;
         graphic.color = c;
-        
-        
     }
 
     private void SetTextVisibility(bool showRightText, bool showLeftText)
     {
-        //null
+        // Gerekiyorsa burada text aktifliklerini kontrol edebilirsin
     }
 }
