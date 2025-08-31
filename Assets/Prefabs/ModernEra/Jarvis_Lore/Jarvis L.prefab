@@ -65,7 +65,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: SG
+  m_text: N...NE ?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e6b9b334cd564364c96bd076736ad913, type: 2}
   m_sharedMaterial: {fileID: 3971438887778130368, guid: e6b9b334cd564364c96bd076736ad913, type: 2}
@@ -314,7 +314,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: TAMAM
+  m_text: N..Noldu Bana ?
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e6b9b334cd564364c96bd076736ad913, type: 2}
   m_sharedMaterial: {fileID: 3971438887778130368, guid: e6b9b334cd564364c96bd076736ad913, type: 2}
@@ -399,7 +399,7 @@ GameObject:
   - component: {fileID: 7652238283695916035}
   - component: {fileID: 7249927700884612645}
   m_Layer: 6
-  m_Name: Jarvis_R
+  m_Name: Jarvis L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -418,6 +418,7 @@ Transform:
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 6966187880562011291}
   - {fileID: 4287065974157723144}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -639,8 +640,7 @@ MonoBehaviour:
   cardEnd: {x: 5, y: 0, z: 0}
   cardEndDuration: 0.5
   currentEra: 1
-  characterString: "KALK ARTIK. U\xC7AN B\u0130R BEY\u0130NE D\xD6N\xDC\u015EM\xDC\u015E\xDCM
-    ! "
+  characterString: "Lan bana ne oldu as\u0131l aw"
   characterName: Jarwis Nega
   isSelected: 0
   rightText: {fileID: 4705490839599937670}
@@ -655,8 +655,8 @@ MonoBehaviour:
   rightFarmChange: 0
   rightPublicChange: 0
   rightEconomyChange: 0
-  cardPrefabRight: {fileID: 0}
-  cardPrefabLeft: {fileID: 0}
+  cardPrefabRight: {fileID: 7899696582023982438, guid: cf758461ca2e63c4e9db5e1ced456553, type: 3}
+  cardPrefabLeft: {fileID: 7899696582023982438, guid: 4eb78bf16a04a614a963bb26d5cce2c9, type: 3}
   cardAppearClip: {fileID: 8300000, guid: 1579ea281b37b6442a77547683174dc7, type: 3}
 --- !u!1001 &2523151336592285212
 PrefabInstance:
@@ -832,4 +832,70 @@ PrefabInstance:
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1763932277805897748, guid: ead458125e7b6b94ea289bff2b222186, type: 3}
   m_PrefabInstance: {fileID: 2523151336592285212}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &4340957282161391175
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2974567718107504361}
+    m_Modifications:
+    - target: {fileID: 1261862450155783898, guid: 97f773bdf5c8f99418d8ea0cb7405dd8, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4bf83a48833d66945985eb9657e62f7f, type: 3}
+    - target: {fileID: 6670661583675874012, guid: 97f773bdf5c8f99418d8ea0cb7405dd8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670661583675874012, guid: 97f773bdf5c8f99418d8ea0cb7405dd8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670661583675874012, guid: 97f773bdf5c8f99418d8ea0cb7405dd8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670661583675874012, guid: 97f773bdf5c8f99418d8ea0cb7405dd8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670661583675874012, guid: 97f773bdf5c8f99418d8ea0cb7405dd8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670661583675874012, guid: 97f773bdf5c8f99418d8ea0cb7405dd8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670661583675874012, guid: 97f773bdf5c8f99418d8ea0cb7405dd8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670661583675874012, guid: 97f773bdf5c8f99418d8ea0cb7405dd8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670661583675874012, guid: 97f773bdf5c8f99418d8ea0cb7405dd8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6670661583675874012, guid: 97f773bdf5c8f99418d8ea0cb7405dd8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9025615184498816955, guid: 97f773bdf5c8f99418d8ea0cb7405dd8, type: 3}
+      propertyPath: m_Name
+      value: JarwisMain_0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 97f773bdf5c8f99418d8ea0cb7405dd8, type: 3}
+--- !u!4 &6966187880562011291 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6670661583675874012, guid: 97f773bdf5c8f99418d8ea0cb7405dd8, type: 3}
+  m_PrefabInstance: {fileID: 4340957282161391175}
   m_PrefabAsset: {fileID: 0}
