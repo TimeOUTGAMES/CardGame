@@ -2529,7 +2529,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
       propertyPath: modernEraAIStart.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
       propertyPath: ancientEraAIStart.Array.size
@@ -2582,7 +2582,7 @@ PrefabInstance:
     - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
       propertyPath: 'modernEraAIStart.Array.data[0]'
       value: 
-      objectReference: {fileID: 8435391579238222520, guid: e9385e68ee83eaa4789c51795495bbf3, type: 3}
+      objectReference: {fileID: 7899696582023982438, guid: 0df00318995ce5742b17fa87f1640eec, type: 3}
     - target: {fileID: 3423395134035438170, guid: 976be843447ebf24ab6ce405d30a8db8, type: 3}
       propertyPath: 'modernEraAIStart.Array.data[1]'
       value: 
