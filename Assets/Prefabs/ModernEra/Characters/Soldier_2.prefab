@@ -377,14 +377,14 @@ MonoBehaviour:
   leftText: {fileID: 5981490659313519802}
   textFadeDistance: 0.5
   fadePanelGO: {fileID: 617982875653261076}
-  leftMilitaryChange: 10
-  leftFarmChange: 10
-  leftPublicChange: 0
+  leftMilitaryChange: -50
+  leftFarmChange: 0
+  leftPublicChange: -50
   leftEconomyChange: 0
   rightMilitaryChange: 0
-  rightFarmChange: -5
-  rightPublicChange: -5
-  rightEconomyChange: 0
+  rightFarmChange: -50
+  rightPublicChange: 0
+  rightEconomyChange: -50
   cardAppearClip: {fileID: 8300000, guid: 1579ea281b37b6442a77547683174dc7, type: 3}
 --- !u!82 &-8681728412761799371
 AudioSource:
@@ -879,7 +879,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6018920217722042109, guid: 2bd6aadfaddb53f45be89b4679f79fc8, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

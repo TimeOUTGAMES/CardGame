@@ -8,11 +8,6 @@ using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 
-public class EndOfEraCardData
-{
-    public string cardName;
-    public Image cardImage;
-}
 
 public class GameManager : MonoBehaviour
 {
@@ -38,11 +33,11 @@ public class GameManager : MonoBehaviour
     public Color ancientColor;
     public Color middleColor;
     public Color modenrColor;
-    
+
     public Age currentAge = Age.MODERN_ERA;
     public List<Image> barsToChange;
-    public EndOfEraCardData militaryEnd, farmEnd, healthEnd, publicEnd;
-    
+    public GameObject militaryEnd, farmEnd, economyEnd, publicEnd;
+
     private UIManager uiManager;
 
     public enum Age
@@ -62,7 +57,7 @@ public class GameManager : MonoBehaviour
             Debug.LogError("WhiteFlashEffect bağlantısı yapılmamış! GameManager içinde null.");
         }
     }
-    
+
 
     public void ManageEra()
     {
@@ -106,7 +101,7 @@ public class GameManager : MonoBehaviour
                         print("gay");
                         break;
 
-                        
+
                 }
                 ChangeAgeColor(currentAge);
                 Debug.Log(currentEra);
@@ -188,49 +183,59 @@ public class GameManager : MonoBehaviour
     {
 
 
-        if (cardsTransform.childCount > 0)
+        if (cardsTransform.childCount > 0 && !BarControl.Instance.isEndOfEra)
         {
             Transform firstCard = cardsTransform.GetChild(0);
             if (!firstCard.gameObject.activeSelf)
             {
                 firstCard.gameObject.SetActive(true);
                 uiManager.ShowText();
-                
+
             }
         }
     }
 
     public void EndOfEraCardManager()
     {
-        switch (BarControl.Instance.CheckBarValue())
+        if (BarControl.Instance.isEndOfEra)
         {
-            case "Military":
-                militaryEnd.cardImage.gameObject.SetActive(true);                
-                break;
-            case "Farm":
-                farmEnd.cardImage.gameObject.SetActive(true);                
-                break;
-            case "Public":
-                publicEnd.cardImage.gameObject.SetActive(true);                
-                break;
-            case "Economy":
-                healthEnd.cardImage.gameObject.SetActive(true);                
-                break;
-            default:
-                Debug.LogError("Geçersiz bar adı: " + BarControl.Instance.CheckBarValue());
-                break;
+            switch (BarControl.Instance.CheckBarValue())
+            {
+                case "Military":
+                    RestartGame(militaryEnd);
 
+                    break;
+                case "Farm":
+                    RestartGame(farmEnd);
+                    break;
+                case "Public":
+                    RestartGame(publicEnd);
+                    break;
+                case "Economy":
+                    RestartGame(economyEnd);
+                    break;
+                default:
+                    break;
+
+            }
         }
+
     }
 
-    public void RestartGame()
+
+    public void RestartGame(GameObject endOfEraCard)
     {
-        if (EndOfEraCard.Instance.isSelected)
+        endOfEraCard.SetActive(true);
+        foreach (Transform child in cardsTransform)
         {
-            Destroy(cardsTransform);
+            Destroy(child.gameObject);
+        }
+        bgCard.SetActive(false);
+        if (EndOfEraCard.Instance.isSelected)
+        {            
             allCardsInstantiate = false;
-            whiteFlashEffect.Play();
-            bgCard.SetActive(false);
+            StartCoroutine(GameOpening.Instance.DealCards());
+            whiteFlashEffect.Play();            
             currentEra = 1;
             BarControl.Instance.InitAllvars();
             CreateCards();

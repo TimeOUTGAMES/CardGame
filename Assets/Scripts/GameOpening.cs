@@ -12,7 +12,7 @@ public class GameOpening : MonoBehaviour
     [SerializeField] private Vector3 startOffset = new Vector3(-1000, 0, 0);
     [SerializeField] private Vector3 endOffset = new Vector3(1000, 0, 0);
     [SerializeField] private Transform targetPosition;
-
+    [SerializeField] private Transform cardParent;
     [Header("Fade Setup")]
     [SerializeField] private GameObject fadePrefab;
 
@@ -31,7 +31,7 @@ public class GameOpening : MonoBehaviour
         // Object Pool oluştur
         for (int i = 0; i < cardNumbers; i++)
         {
-            GameObject card = Instantiate(cardPrefab, transform);
+            GameObject card = Instantiate(cardPrefab, cardParent);
             card.SetActive(false);
             cardPool.Add(card);
         }
@@ -48,7 +48,7 @@ public class GameOpening : MonoBehaviour
     public IEnumerator DealCards()
     {
         Vector3 offsetValue = endOffset;
-
+        cardParent.gameObject.SetActive(true);
         for (int i = 0; i < cardNumbers; i++)
         {
             GameObject card = cardPool[i];
@@ -93,7 +93,7 @@ public class GameOpening : MonoBehaviour
                 GameManager.instance.CreateCards();
                 GameManager.instance.cardsTransform.gameObject.SetActive(true);
                 GameManager.instance.bgCard.SetActive(true);
-
+                cardParent.gameObject.SetActive(false);
                 fadeRenderer.DOFade(0f, 0.5f).SetEase(Ease.OutBack);
             });
         }

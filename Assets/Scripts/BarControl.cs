@@ -131,8 +131,8 @@ public class BarControl : MonoBehaviour
 
     private void ApplySingleEffect(BarData bar, float change)
     {
-        if (bar.slider == null || bar.fillImage == null) return;
-
+        if (bar.slider == null || bar.fillImage == null || bar.slider.value==0) return;
+        
         float startValue = bar.slider.value;
         float endValue = Mathf.Clamp(startValue + change, minBarValue, maxBarValue);
         float duration = 0.5f;
@@ -170,6 +170,7 @@ public class BarControl : MonoBehaviour
 
         bar.originalValue = -1f;
         bar.originalFill = -1f;
+        isEndOfEra = bar.slider.value <= 0;
     }
 
     public void ResetBarColors()
